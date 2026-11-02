@@ -1,0 +1,76 @@
+{
+  "selection_rule": "argmax validation Poisson-GLM bits/spike (single-lag velocity+speed GLM)",
+  "selected_lag_bins": 5,
+  "rows": [
+    {
+      "lag_bins": 0,
+      "lag_ms": 0,
+      "glm_val_bits_per_spike": 0.06539085117563483,
+      "kf_val_r2": 0.15130319637128342,
+      "wiener20_val_r2": 0.7073595644289931
+    },
+    {
+      "lag_bins": 1,
+      "lag_ms": 20,
+      "glm_val_bits_per_spike": 0.06828351874627966,
+      "kf_val_r2": 0.165161603184582,
+      "wiener20_val_r2": 0.699014384428233
+    },
+    {
+      "lag_bins": 2,
+      "lag_ms": 40,
+      "glm_val_bits_per_spike": 0.07070012759042059,
+      "kf_val_r2": 0.17643364392237393,
+      "wiener20_val_r2": 0.6885710286282303
+    },
+    {
+      "lag_bins": 3,
+      "lag_ms": 60,
+      "glm_val_bits_per_spike": 0.07256739160095865,
+      "kf_val_r2": 0.1857855461938035,
+      "wiener20_val_r2": 0.6751799192178601
+    },
+    {
+      "lag_bins": 4,
+      "lag_ms": 80,
+      "glm_val_bits_per_spike": 0.0741031912987057,
+      "kf_val_r2": 0.1929661988792078,
+      "wiener20_val_r2": 0.658551610249653
+    },
+    {
+      "lag_bins": 5,
+      "lag_ms": 100,
+      "glm_val_bits_per_spike": 0.07484338850464571,
+      "kf_val_r2": 0.1973866220311406,
+      "wiener20_val_r2": 0.6383090843294044
+    },
+    {
+      "lag_bins": 6,
+      "lag_ms": 120,
+      "glm_val_bits_per_spike": 0.07479519574119925,
+      "kf_val_r2": 0.19811381859328547,
+      "wiener20_val_r2": 0.6149191290743439
+    },
+    {
+      "lag_bins": 7,
+      "lag_ms": 140,
+      "glm_val_bits_per_spike": 0.0741279514259721,
+      "kf_val_r2": 0.19480784722590527,
+      "wiener20_val_r2": 0.5890507866579968
+    },
+    {
+      "lag_bins": 8,
+      "lag_ms": 160,
+      "glm_val_bits_per_spike": 0.07261195123090564,
+      "kf_val_r2": 0.18284563834483636,
+      "wiener20_val_r2": 0.5602420734842026
+    }
+  ],
+  "n_trials": {
+    "train": 1567,
+    "val": 335,
+    "test": 336
+  },
+  "n_units": 182,
+  "raw_sha256": "a27f84f9c31f077011062fd99a6ced199fdf19e656151f056c3c6244a408a3c4"
+}

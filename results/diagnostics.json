@@ -1,0 +1,1384 @@
+{
+  "seeds": [
+    300,
+    301,
+    302,
+    303,
+    304,
+    305,
+    306,
+    307
+  ],
+  "session_seconds": 60.0,
+  "dwell_sweep": {
+    "grids": [
+      4,
+      6,
+      8,
+      12
+    ],
+    "cell_mm": [
+      60.0,
+      40.0,
+      30.0,
+      20.0
+    ],
+    "dwell_s": [
+      0.3,
+      0.5,
+      1.0
+    ],
+    "gains": {
+      "Oracle": 1.0,
+      "ReFIT-KF": 0.5,
+      "KF": 0.25,
+      "Wiener": 0.5,
+      "GRU-16": 0.5,
+      "GRU-64": 1.4
+    },
+    "results": {
+      "g12_d0.3": {
+        "Oracle": {
+          "bps_mean": 7.8012764773647865,
+          "bps_ci95": [
+            7.637196092563615,
+            7.95044046354767
+          ],
+          "correct_per_min": 69.25,
+          "incorrect_per_min": 3.875,
+          "wrong_reselect_previous_per_min": 3.875,
+          "wrong_other_cell_per_min": 0.0,
+          "time_to_target_s": 0.8592378016748554
+        },
+        "ReFIT-KF": {
+          "bps_mean": 0.0,
+          "bps_ci95": [
+            0.0,
+            0.0
+          ],
+          "correct_per_min": 17.875,
+          "incorrect_per_min": 85.0,
+          "wrong_reselect_previous_per_min": 12.5,
+          "wrong_other_cell_per_min": 72.5,
+          "time_to_target_s": 3.2757730074867473
+        },
+        "KF": {
+          "bps_mean": 0.0,
+          "bps_ci95": [
+            0.0,
+            0.0
+          ],
+          "correct_per_min": 22.0,
+          "incorrect_per_min": 86.625,
+          "wrong_reselect_previous_per_min": 19.25,
+          "wrong_other_cell_per_min": 67.375,
+          "time_to_target_s": 2.6723096123460826
+        },
+        "Wiener": {
+          "bps_mean": 0.0,
+          "bps_ci95": [
+            0.0,
+            0.0
+          ],
+          "correct_per_min": 18.375,
+          "incorrect_per_min": 72.75,
+          "wrong_reselect_previous_per_min": 11.0,
+          "wrong_other_cell_per_min": 61.75,
+          "time_to_target_s": 3.206921685340803
+        },
+        "GRU-16": {
+          "bps_mean": 0.0,
+          "bps_ci95": [
+            0.0,
+            0.0
+          ],
+          "correct_per_min": 8.25,
+          "incorrect_per_min": 129.125,
+          "wrong_reselect_previous_per_min": 7.25,
+          "wrong_other_cell_per_min": 121.875,
+          "time_to_target_s": 6.700193452380953
+        },
+        "GRU-64": {
+          "bps_mean": 0.0,
+          "bps_ci95": [
+            0.0,
+            0.0
+          ],
+          "correct_per_min": 9.0,
+          "incorrect_per_min": 115.0,
+          "wrong_reselect_previous_per_min": 5.0,
+          "wrong_other_cell_per_min": 110.0,
+          "time_to_target_s": 6.655726266788767
+        }
+      },
+      "g12_d0.5": {
+        "Oracle": {
+          "bps_mean": 6.712379378229739,
+          "bps_ci95": [
+            6.682546580993163,
+            6.7571285740846045
+          ],
+          "correct_per_min": 56.25,
+          "incorrect_per_min": 0.0,
+          "wrong_reselect_previous_per_min": 0.0,
+          "wrong_other_cell_per_min": 0.0,
+          "time_to_target_s": 1.0568843984962406
+        },
+        "ReFIT-KF": {
+          "bps_mean": 0.0,
+          "bps_ci95": [
+            0.0,
+            0.0
+          ],
+          "correct_per_min": 15.0,
+          "incorrect_per_min": 34.875,
+          "wrong_reselect_previous_per_min": 1.375,
+          "wrong_other_cell_per_min": 33.5,
+          "time_to_target_s": 3.8420091575091577
+        },
+        "KF": {
+          "bps_mean": 0.0,
+          "bps_ci95": [
+            0.0,
+            0.0
+          ],
+          "correct_per_min": 19.25,
+          "incorrect_per_min": 31.25,
+          "wrong_reselect_previous_per_min": 2.625,
+          "wrong_other_cell_per_min": 28.625,
+          "time_to_target_s": 3.041507575757576
+        },
+        "Wiener": {
+          "bps_mean": 0.0,
+          "bps_ci95": [
+            0.0,
+            0.0
+          ],
+          "correct_per_min": 14.75,
+          "incorrect_per_min": 24.375,
+          "wrong_reselect_previous_per_min": 1.125,
+          "wrong_other_cell_per_min": 23.25,
+          "time_to_target_s": 3.9783182503770735
+        },
+        "GRU-16": {
+          "bps_mean": 0.0,
+          "bps_ci95": [
+            0.0,
+            0.0
+          ],
+          "correct_per_min": 6.75,
+          "incorrect_per_min": 65.125,
+          "wrong_reselect_previous_per_min": 0.5,
+          "wrong_other_cell_per_min": 64.625,
+          "time_to_target_s": 8.911270833333333
+        },
+        "GRU-64": {
+          "bps_mean": 0.0,
+          "bps_ci95": [
+            0.0,
+            0.0
+          ],
+          "correct_per_min": 7.75,
+          "incorrect_per_min": 55.125,
+          "wrong_reselect_previous_per_min": 0.5,
+          "wrong_other_cell_per_min": 54.625,
+          "time_to_target_s": 8.103063762626263
+        }
+      },
+      "g12_d1.0": {
+        "Oracle": {
+          "bps_mean": 4.549501578577935,
+          "bps_ci95": [
+            4.534585179959646,
+            4.579334375814511
+          ],
+          "correct_per_min": 38.125,
+          "incorrect_per_min": 0.0,
+          "wrong_reselect_previous_per_min": 0.0,
+          "wrong_other_cell_per_min": 0.0,
+          "time_to_target_s": 1.5495664642375169
+        },
+        "ReFIT-KF": {
+          "bps_mean": 0.19391318203774804,
+          "bps_ci95": [
+            0.08949839170972987,
+            0.29832797236576625
+          ],
+          "correct_per_min": 9.125,
+          "incorrect_per_min": 8.875,
+          "wrong_reselect_previous_per_min": 0.125,
+          "wrong_other_cell_per_min": 8.75,
+          "time_to_target_s": 6.277505772005772
+        },
+        "KF": {
+          "bps_mean": 1.0739807005167585,
+          "bps_ci95": [
+            0.8949839170972986,
+            1.2828102811727948
+          ],
+          "correct_per_min": 15.0,
+          "incorrect_per_min": 6.0,
+          "wrong_reselect_previous_per_min": 0.125,
+          "wrong_other_cell_per_min": 5.875,
+          "time_to_target_s": 3.888924692954105
+        },
+        "Wiener": {
+          "bps_mean": 0.5966559447315325,
+          "bps_ci95": [
+            0.3729099654572078,
+            0.8502347212424337
+          ],
+          "correct_per_min": 8.125,
+          "incorrect_per_min": 3.125,
+          "wrong_reselect_previous_per_min": 0.0,
+          "wrong_other_cell_per_min": 3.125,
+          "time_to_target_s": 7.18695165945166
+        },
+        "GRU-16": {
+          "bps_mean": 0.0,
+          "bps_ci95": [
+            0.0,
+            0.0
+          ],
+          "correct_per_min": 6.0,
+          "incorrect_per_min": 20.875,
+          "wrong_reselect_previous_per_min": 0.125,
+          "wrong_other_cell_per_min": 20.75,
+          "time_to_target_s": 9.645248015873015
+        },
+        "GRU-64": {
+          "bps_mean": 0.0,
+          "bps_ci95": [
+            0.0,
+            0.0
+          ],
+          "correct_per_min": 5.125,
+          "incorrect_per_min": 14.875,
+          "wrong_reselect_previous_per_min": 0.125,
+          "wrong_other_cell_per_min": 14.75,
+          "time_to_target_s": 12.298208333333335
+        }
+      },
+      "g4_d0.3": {
+        "Oracle": {
+          "bps_mean": 0.04069677703758874,
+          "bps_ci95": [
+            0.016278710815035496,
+            0.05697548785262423
+          ],
+          "correct_per_min": 80.75,
+          "incorrect_per_min": 80.125,
+          "wrong_reselect_previous_per_min": 80.125,
+          "wrong_other_cell_per_min": 0.0,
+          "time_to_target_s": 0.7381192035531468
+        },
+        "ReFIT-KF": {
+          "bps_mean": 0.0,
+          "bps_ci95": [
+            0.0,
+            0.0
+          ],
+          "correct_per_min": 41.125,
+          "incorrect_per_min": 80.125,
+          "wrong_reselect_previous_per_min": 43.375,
+          "wrong_other_cell_per_min": 36.75,
+          "time_to_target_s": 1.44363739527991
+        },
+        "KF": {
+          "bps_mean": 0.0,
+          "bps_ci95": [
+            0.0,
+            0.0
+          ],
+          "correct_per_min": 40.25,
+          "incorrect_per_min": 84.625,
+          "wrong_reselect_previous_per_min": 47.875,
+          "wrong_other_cell_per_min": 36.75,
+          "time_to_target_s": 1.465029756320915
+        },
+        "Wiener": {
+          "bps_mean": 0.0,
+          "bps_ci95": [
+            0.0,
+            0.0
+          ],
+          "correct_per_min": 44.875,
+          "incorrect_per_min": 75.375,
+          "wrong_reselect_previous_per_min": 45.125,
+          "wrong_other_cell_per_min": 30.25,
+          "time_to_target_s": 1.3250644163082756
+        },
+        "GRU-16": {
+          "bps_mean": 0.0,
+          "bps_ci95": [
+            0.0,
+            0.0
+          ],
+          "correct_per_min": 18.125,
+          "incorrect_per_min": 137.75,
+          "wrong_reselect_previous_per_min": 22.0,
+          "wrong_other_cell_per_min": 115.75,
+          "time_to_target_s": 3.5438547979797983
+        },
+        "GRU-64": {
+          "bps_mean": 0.0,
+          "bps_ci95": [
+            0.0,
+            0.0
+          ],
+          "correct_per_min": 25.5,
+          "incorrect_per_min": 118.125,
+          "wrong_reselect_previous_per_min": 28.25,
+          "wrong_other_cell_per_min": 89.875,
+          "time_to_target_s": 2.3340783197951995
+        }
+      },
+      "g4_d0.5": {
+        "Oracle": {
+          "bps_mean": 4.134792547019016,
+          "bps_ci95": [
+            4.110374480796462,
+            4.159210613241569
+          ],
+          "correct_per_min": 63.5,
+          "incorrect_per_min": 0.0,
+          "wrong_reselect_previous_per_min": 0.0,
+          "wrong_other_cell_per_min": 0.0,
+          "time_to_target_s": 0.9382899305555557
+        },
+        "ReFIT-KF": {
+          "bps_mean": 0.09767226489021297,
+          "bps_ci95": [
+            0.0,
+            0.22790195141049696
+          ],
+          "correct_per_min": 34.0,
+          "incorrect_per_min": 34.25,
+          "wrong_reselect_previous_per_min": 20.25,
+          "wrong_other_cell_per_min": 14.0,
+          "time_to_target_s": 1.7414166229165042
+        },
+        "KF": {
+          "bps_mean": 0.008139355407517748,
+          "bps_ci95": [
+            0.0,
+            0.024418066222553242
+          ],
+          "correct_per_min": 35.0,
+          "incorrect_per_min": 36.25,
+          "wrong_reselect_previous_per_min": 21.75,
+          "wrong_other_cell_per_min": 14.5,
+          "time_to_target_s": 1.6835814659197013
+        },
+        "Wiener": {
+          "bps_mean": 1.318575576017875,
+          "bps_ci95": [
+            1.1313704016449668,
+            1.5301988166133365
+          ],
+          "correct_per_min": 38.5,
+          "incorrect_per_min": 18.25,
+          "wrong_reselect_previous_per_min": 9.25,
+          "wrong_other_cell_per_min": 9.0,
+          "time_to_target_s": 1.5286439868512236
+        },
+        "GRU-16": {
+          "bps_mean": 0.0,
+          "bps_ci95": [
+            0.0,
+            0.0
+          ],
+          "correct_per_min": 18.25,
+          "incorrect_per_min": 67.375,
+          "wrong_reselect_previous_per_min": 8.25,
+          "wrong_other_cell_per_min": 59.125,
+          "time_to_target_s": 3.4418485528847373
+        },
+        "GRU-64": {
+          "bps_mean": 0.0,
+          "bps_ci95": [
+            0.0,
+            0.0
+          ],
+          "correct_per_min": 22.625,
+          "incorrect_per_min": 49.875,
+          "wrong_reselect_previous_per_min": 5.375,
+          "wrong_other_cell_per_min": 44.5,
+          "time_to_target_s": 2.6205980519480523
+        }
+      },
+      "g4_d1.0": {
+        "Oracle": {
+          "bps_mean": 2.677847929073339,
+          "bps_ci95": [
+            2.669708573665821,
+            2.694126639888374
+          ],
+          "correct_per_min": 41.125,
+          "incorrect_per_min": 0.0,
+          "wrong_reselect_previous_per_min": 0.0,
+          "wrong_other_cell_per_min": 0.0,
+          "time_to_target_s": 1.4376611498257839
+        },
+        "ReFIT-KF": {
+          "bps_mean": 1.611592370688514,
+          "bps_ci95": [
+            1.546477527428372,
+            1.676707213948656
+          ],
+          "correct_per_min": 25.25,
+          "incorrect_per_min": 0.5,
+          "wrong_reselect_previous_per_min": 0.0,
+          "wrong_other_cell_per_min": 0.5,
+          "time_to_target_s": 2.3396088319088317
+        },
+        "KF": {
+          "bps_mean": 1.6685678585411383,
+          "bps_ci95": [
+            1.6115923706885138,
+            1.7336827018012801
+          ],
+          "correct_per_min": 26.625,
+          "incorrect_per_min": 1.0,
+          "wrong_reselect_previous_per_min": 0.125,
+          "wrong_other_cell_per_min": 0.875,
+          "time_to_target_s": 2.192080280830281
+        },
+        "Wiener": {
+          "bps_mean": 1.6604285031336203,
+          "bps_ci95": [
+            1.5627562382434075,
+            1.7581007680238334
+          ],
+          "correct_per_min": 27.75,
+          "incorrect_per_min": 2.25,
+          "wrong_reselect_previous_per_min": 0.25,
+          "wrong_other_cell_per_min": 2.0,
+          "time_to_target_s": 2.1173931097637997
+        },
+        "GRU-16": {
+          "bps_mean": 0.09767226489021297,
+          "bps_ci95": [
+            0.0,
+            0.2767380838556034
+          ],
+          "correct_per_min": 15.25,
+          "incorrect_per_min": 22.125,
+          "wrong_reselect_previous_per_min": 0.375,
+          "wrong_other_cell_per_min": 21.75,
+          "time_to_target_s": 3.7160819735819737
+        },
+        "GRU-64": {
+          "bps_mean": 0.3988284149683696,
+          "bps_ci95": [
+            0.17906581896539042,
+            0.6185910109713488
+          ],
+          "correct_per_min": 17.625,
+          "incorrect_per_min": 12.625,
+          "wrong_reselect_previous_per_min": 0.625,
+          "wrong_other_cell_per_min": 12.0,
+          "time_to_target_s": 3.385489486004192
+        }
+      },
+      "g6_d0.3": {
+        "Oracle": {
+          "bps_mean": 3.29128993587302,
+          "bps_ci95": [
+            3.098941822737584,
+            3.4943240552937582
+          ],
+          "correct_per_min": 78.625,
+          "incorrect_per_min": 40.125,
+          "wrong_reselect_previous_per_min": 40.125,
+          "wrong_other_cell_per_min": 0.0,
+          "time_to_target_s": 0.7588574894251318
+        },
+        "ReFIT-KF": {
+          "bps_mean": 0.0,
+          "bps_ci95": [
+            0.0,
+            0.0
+          ],
+          "correct_per_min": 30.875,
+          "incorrect_per_min": 85.75,
+          "wrong_reselect_previous_per_min": 31.625,
+          "wrong_other_cell_per_min": 54.125,
+          "time_to_target_s": 1.9158765120967742
+        },
+        "KF": {
+          "bps_mean": 0.0,
+          "bps_ci95": [
+            0.0,
+            0.0
+          ],
+          "correct_per_min": 32.75,
+          "incorrect_per_min": 84.125,
+          "wrong_reselect_previous_per_min": 35.5,
+          "wrong_other_cell_per_min": 48.625,
+          "time_to_target_s": 1.8089717829921939
+        },
+        "Wiener": {
+          "bps_mean": 0.0,
+          "bps_ci95": [
+            0.0,
+            0.0
+          ],
+          "correct_per_min": 31.0,
+          "incorrect_per_min": 79.5,
+          "wrong_reselect_previous_per_min": 28.25,
+          "wrong_other_cell_per_min": 51.25,
+          "time_to_target_s": 1.9019083632637757
+        },
+        "GRU-16": {
+          "bps_mean": 0.0,
+          "bps_ci95": [
+            0.0,
+            0.0
+          ],
+          "correct_per_min": 15.25,
+          "incorrect_per_min": 128.75,
+          "wrong_reselect_previous_per_min": 16.375,
+          "wrong_other_cell_per_min": 112.375,
+          "time_to_target_s": 3.830844395596234
+        },
+        "GRU-64": {
+          "bps_mean": 0.0,
+          "bps_ci95": [
+            0.0,
+            0.0
+          ],
+          "correct_per_min": 15.75,
+          "incorrect_per_min": 124.125,
+          "wrong_reselect_previous_per_min": 14.625,
+          "wrong_other_cell_per_min": 109.5,
+          "time_to_target_s": 3.805356321310269
+        }
+      },
+      "g6_d0.5": {
+        "Oracle": {
+          "bps_mean": 5.289573111224497,
+          "bps_ci95": [
+            5.2682010986538925,
+            5.300259117509799
+          ],
+          "correct_per_min": 61.875,
+          "incorrect_per_min": 0.0,
+          "wrong_reselect_previous_per_min": 0.0,
+          "wrong_other_cell_per_min": 0.0,
+          "time_to_target_s": 0.9613101533580117
+        },
+        "ReFIT-KF": {
+          "bps_mean": 0.0,
+          "bps_ci95": [
+            0.0,
+            0.0
+          ],
+          "correct_per_min": 26.5,
+          "incorrect_per_min": 31.875,
+          "wrong_reselect_previous_per_min": 9.625,
+          "wrong_other_cell_per_min": 22.25,
+          "time_to_target_s": 2.2260828754578754
+        },
+        "KF": {
+          "bps_mean": 0.10686006285302013,
+          "bps_ci95": [
+            0.0,
+            0.2564641508472483
+          ],
+          "correct_per_min": 28.75,
+          "incorrect_per_min": 31.25,
+          "wrong_reselect_previous_per_min": 10.875,
+          "wrong_other_cell_per_min": 20.375,
+          "time_to_target_s": 2.059450557939156
+        },
+        "Wiener": {
+          "bps_mean": 0.42744025141208053,
+          "bps_ci95": [
+            0.17097610056483223,
+            0.7052764148299329
+          ],
+          "correct_per_min": 27.0,
+          "incorrect_per_min": 22.75,
+          "wrong_reselect_previous_per_min": 3.375,
+          "wrong_other_cell_per_min": 19.375,
+          "time_to_target_s": 2.1545864340799685
+        },
+        "GRU-16": {
+          "bps_mean": 0.0,
+          "bps_ci95": [
+            0.0,
+            0.0
+          ],
+          "correct_per_min": 12.875,
+          "incorrect_per_min": 69.5,
+          "wrong_reselect_previous_per_min": 2.5,
+          "wrong_other_cell_per_min": 67.0,
+          "time_to_target_s": 4.562597527472527
+        },
+        "GRU-64": {
+          "bps_mean": 0.0,
+          "bps_ci95": [
+            0.0,
+            0.0
+          ],
+          "correct_per_min": 13.0,
+          "incorrect_per_min": 58.0,
+          "wrong_reselect_previous_per_min": 1.875,
+          "wrong_other_cell_per_min": 56.125,
+          "time_to_target_s": 4.574861721611722
+        }
+      },
+      "g6_d1.0": {
+        "Oracle": {
+          "bps_mean": 3.483638049008456,
+          "bps_ci95": [
+            3.4515800301525505,
+            3.50501006157906
+          ],
+          "correct_per_min": 40.75,
+          "incorrect_per_min": 0.0,
+          "wrong_reselect_previous_per_min": 0.0,
+          "wrong_other_cell_per_min": 0.0,
+          "time_to_target_s": 1.4589542682926828
+        },
+        "ReFIT-KF": {
+          "bps_mean": 1.570842923939396,
+          "bps_ci95": [
+            1.4532968548010738,
+            1.677702986792416
+          ],
+          "correct_per_min": 21.0,
+          "incorrect_per_min": 2.625,
+          "wrong_reselect_previous_per_min": 0.0,
+          "wrong_other_cell_per_min": 2.625,
+          "time_to_target_s": 2.7872321428571425
+        },
+        "KF": {
+          "bps_mean": 1.549470911368792,
+          "bps_ci95": [
+            1.48535487365698,
+            1.634958961651208
+          ],
+          "correct_per_min": 22.375,
+          "incorrect_per_min": 4.25,
+          "wrong_reselect_previous_per_min": 0.25,
+          "wrong_other_cell_per_min": 4.0,
+          "time_to_target_s": 2.6165520303971395
+        },
+        "Wiener": {
+          "bps_mean": 1.4532968548010738,
+          "bps_ci95": [
+            1.3250647793774495,
+            1.570842923939396
+          ],
+          "correct_per_min": 21.125,
+          "incorrect_per_min": 4.125,
+          "wrong_reselect_previous_per_min": 0.375,
+          "wrong_other_cell_per_min": 3.75,
+          "time_to_target_s": 2.765195374800638
+        },
+        "GRU-16": {
+          "bps_mean": 0.0,
+          "bps_ci95": [
+            0.0,
+            0.0
+          ],
+          "correct_per_min": 11.625,
+          "incorrect_per_min": 22.25,
+          "wrong_reselect_previous_per_min": 0.875,
+          "wrong_other_cell_per_min": 21.375,
+          "time_to_target_s": 5.085813034188034
+        },
+        "GRU-64": {
+          "bps_mean": 0.0,
+          "bps_ci95": [
+            0.0,
+            0.0
+          ],
+          "correct_per_min": 10.25,
+          "incorrect_per_min": 17.5,
+          "wrong_reselect_previous_per_min": 1.0,
+          "wrong_other_cell_per_min": 16.5,
+          "time_to_target_s": 5.448354797979798
+        }
+      },
+      "g8_d0.3": {
+        "Oracle": {
+          "bps_mean": 6.438028584269702,
+          "bps_ci95": [
+            6.2263332536457465,
+            6.637271248386367
+          ],
+          "correct_per_min": 77.25,
+          "incorrect_per_min": 12.625,
+          "wrong_reselect_previous_per_min": 12.625,
+          "wrong_other_cell_per_min": 0.0,
+          "time_to_target_s": 0.7730644355644356
+        },
+        "ReFIT-KF": {
+          "bps_mean": 0.0,
+          "bps_ci95": [
+            0.0,
+            0.0
+          ],
+          "correct_per_min": 25.875,
+          "incorrect_per_min": 80.875,
+          "wrong_reselect_previous_per_min": 22.375,
+          "wrong_other_cell_per_min": 58.5,
+          "time_to_target_s": 2.254144424094424
+        },
+        "KF": {
+          "bps_mean": 0.0,
+          "bps_ci95": [
+            0.0,
+            0.0
+          ],
+          "correct_per_min": 27.375,
+          "incorrect_per_min": 87.375,
+          "wrong_reselect_previous_per_min": 28.375,
+          "wrong_other_cell_per_min": 59.0,
+          "time_to_target_s": 2.1603605432402846
+        },
+        "Wiener": {
+          "bps_mean": 0.0,
+          "bps_ci95": [
+            0.0,
+            0.0
+          ],
+          "correct_per_min": 26.0,
+          "incorrect_per_min": 77.5,
+          "wrong_reselect_previous_per_min": 20.625,
+          "wrong_other_cell_per_min": 56.875,
+          "time_to_target_s": 2.2737698656547796
+        },
+        "GRU-16": {
+          "bps_mean": 0.0,
+          "bps_ci95": [
+            0.0,
+            0.0
+          ],
+          "correct_per_min": 11.375,
+          "incorrect_per_min": 134.25,
+          "wrong_reselect_previous_per_min": 11.5,
+          "wrong_other_cell_per_min": 122.75,
+          "time_to_target_s": 5.05889559052059
+        },
+        "GRU-64": {
+          "bps_mean": 0.0,
+          "bps_ci95": [
+            0.0,
+            0.0
+          ],
+          "correct_per_min": 12.25,
+          "incorrect_per_min": 122.5,
+          "wrong_reselect_previous_per_min": 11.0,
+          "wrong_other_cell_per_min": 111.5,
+          "time_to_target_s": 4.585705492424243
+        }
+      },
+      "g8_d0.5": {
+        "Oracle": {
+          "bps_mean": 6.101806588572831,
+          "bps_ci95": [
+            6.076901255558249,
+            6.139164588094706
+          ],
+          "correct_per_min": 61.25,
+          "incorrect_per_min": 0.0,
+          "wrong_reselect_previous_per_min": 0.0,
+          "wrong_other_cell_per_min": 0.0,
+          "time_to_target_s": 0.9723122686409307
+        },
+        "ReFIT-KF": {
+          "bps_mean": 0.024905333014582986,
+          "bps_ci95": [
+            0.0,
+            0.07471599904374895
+          ],
+          "correct_per_min": 22.375,
+          "incorrect_per_min": 29.375,
+          "wrong_reselect_previous_per_min": 4.125,
+          "wrong_other_cell_per_min": 25.25,
+          "time_to_target_s": 2.6571858436853004
+        },
+        "KF": {
+          "bps_mean": 0.062263332536457466,
+          "bps_ci95": [
+            0.0,
+            0.1867899976093724
+          ],
+          "correct_per_min": 24.875,
+          "incorrect_per_min": 29.125,
+          "wrong_reselect_previous_per_min": 6.625,
+          "wrong_other_cell_per_min": 22.5,
+          "time_to_target_s": 2.3539670831784965
+        },
+        "Wiener": {
+          "bps_mean": 0.024905333014582986,
+          "bps_ci95": [
+            0.0,
+            0.07471599904374895
+          ],
+          "correct_per_min": 21.125,
+          "incorrect_per_min": 25.375,
+          "wrong_reselect_previous_per_min": 2.875,
+          "wrong_other_cell_per_min": 22.5,
+          "time_to_target_s": 2.776248455047368
+        },
+        "GRU-16": {
+          "bps_mean": 0.0,
+          "bps_ci95": [
+            0.0,
+            0.0
+          ],
+          "correct_per_min": 11.625,
+          "incorrect_per_min": 64.0,
+          "wrong_reselect_previous_per_min": 0.875,
+          "wrong_other_cell_per_min": 63.125,
+          "time_to_target_s": 5.015717532467533
+        },
+        "GRU-64": {
+          "bps_mean": 0.0,
+          "bps_ci95": [
+            0.0,
+            0.0
+          ],
+          "correct_per_min": 10.625,
+          "incorrect_per_min": 55.625,
+          "wrong_reselect_previous_per_min": 0.625,
+          "wrong_other_cell_per_min": 55.0,
+          "time_to_target_s": 5.286597915972916
+        }
+      },
+      "g8_d1.0": {
+        "Oracle": {
+          "bps_mean": 3.984853282333278,
+          "bps_ci95": [
+            3.984853282333278,
+            3.984853282333278
+          ],
+          "correct_per_min": 40.0,
+          "incorrect_per_min": 0.0,
+          "wrong_reselect_previous_per_min": 0.0,
+          "wrong_other_cell_per_min": 0.0,
+          "time_to_target_s": 1.4735
+        },
+        "ReFIT-KF": {
+          "bps_mean": 1.2328139842218577,
+          "bps_ci95": [
+            1.033571320105194,
+            1.4071513153239388
+          ],
+          "correct_per_min": 16.75,
+          "incorrect_per_min": 4.375,
+          "wrong_reselect_previous_per_min": 0.125,
+          "wrong_other_cell_per_min": 4.25,
+          "time_to_target_s": 3.5438149509803925
+        },
+        "KF": {
+          "bps_mean": 1.5441306469041454,
+          "bps_ci95": [
+            1.4320566483385218,
+            1.6562046454697688
+          ],
+          "correct_per_min": 19.625,
+          "incorrect_per_min": 4.125,
+          "wrong_reselect_previous_per_min": 0.25,
+          "wrong_other_cell_per_min": 3.875,
+          "time_to_target_s": 2.977057644110276
+        },
+        "Wiener": {
+          "bps_mean": 1.0958346526416514,
+          "bps_ci95": [
+            0.7845179899593641,
+            1.4196039818312303
+          ],
+          "correct_per_min": 15.75,
+          "incorrect_per_min": 4.75,
+          "wrong_reselect_previous_per_min": 0.125,
+          "wrong_other_cell_per_min": 4.625,
+          "time_to_target_s": 3.762649219201851
+        },
+        "GRU-16": {
+          "bps_mean": 0.0,
+          "bps_ci95": [
+            0.0,
+            0.0
+          ],
+          "correct_per_min": 9.375,
+          "incorrect_per_min": 22.0,
+          "wrong_reselect_previous_per_min": 0.25,
+          "wrong_other_cell_per_min": 21.75,
+          "time_to_target_s": 6.076400793650794
+        },
+        "GRU-64": {
+          "bps_mean": 0.0,
+          "bps_ci95": [
+            0.0,
+            0.0
+          ],
+          "correct_per_min": 9.375,
+          "incorrect_per_min": 16.625,
+          "wrong_reselect_previous_per_min": 0.125,
+          "wrong_other_cell_per_min": 16.5,
+          "time_to_target_s": 6.502565476190477
+        }
+      }
+    }
+  },
+  "user_ablation_click": {
+    "gains": {
+      "Oracle": 1.0,
+      "ReFIT-KF": 0.5,
+      "KF": 0.25,
+      "Wiener": 0.5,
+      "GRU-16": 0.5,
+      "GRU-64": 1.4
+    },
+    "results": {
+      "default (adaptive forward model)": {
+        "Oracle": {
+          "bps_mean": 9.17358515024731,
+          "bps_ci95": [
+            9.054253961301004,
+            9.307832737811907
+          ],
+          "correct_per_min": 77.125,
+          "incorrect_per_min": 0.25,
+          "wrong_reselect_previous_per_min": 0.125,
+          "wrong_other_cell_per_min": 0.125,
+          "time_to_target_s": 0.7724848685305923
+        },
+        "ReFIT-KF": {
+          "bps_mean": 2.0137138134689216,
+          "bps_ci95": [
+            1.8645498272860388,
+            2.237459792743247
+          ],
+          "correct_per_min": 21.0,
+          "incorrect_per_min": 4.125,
+          "wrong_reselect_previous_per_min": 0.0,
+          "wrong_other_cell_per_min": 4.125,
+          "time_to_target_s": 2.8005216450216452
+        },
+        "KF": {
+          "bps_mean": 2.684951751291896,
+          "bps_ci95": [
+            2.535787765109013,
+            2.8191993388564907
+          ],
+          "correct_per_min": 24.625,
+          "incorrect_per_min": 2.125,
+          "wrong_reselect_previous_per_min": 0.25,
+          "wrong_other_cell_per_min": 1.875,
+          "time_to_target_s": 2.3955044871794873
+        },
+        "Wiener": {
+          "bps_mean": 1.6706366452482908,
+          "bps_ci95": [
+            1.4021414701191013,
+            1.9540482189957686
+          ],
+          "correct_per_min": 21.25,
+          "incorrect_per_min": 7.25,
+          "wrong_reselect_previous_per_min": 0.125,
+          "wrong_other_cell_per_min": 7.125,
+          "time_to_target_s": 2.778146673501937
+        },
+        "GRU-16": {
+          "bps_mean": 0.8054855253875688,
+          "bps_ci95": [
+            0.6414051405863974,
+            0.9844823088070285
+          ],
+          "correct_per_min": 8.125,
+          "incorrect_per_min": 1.375,
+          "wrong_reselect_previous_per_min": 0.0,
+          "wrong_other_cell_per_min": 1.375,
+          "time_to_target_s": 6.89729705017205
+        },
+        "GRU-64": {
+          "bps_mean": 0.7905691267692805,
+          "bps_ci95": [
+            0.6115723433498208,
+            0.969938820154192
+          ],
+          "correct_per_min": 8.25,
+          "incorrect_per_min": 1.625,
+          "wrong_reselect_previous_per_min": 0.0,
+          "wrong_other_cell_per_min": 1.625,
+          "time_to_target_s": 6.992513798701299
+        }
+      },
+      "fixed_gain_forward_model": {
+        "Oracle": {
+          "bps_mean": 9.188501548865599,
+          "bps_ci95": [
+            9.054253961301004,
+            9.337665535048481
+          ],
+          "correct_per_min": 77.25,
+          "incorrect_per_min": 0.25,
+          "wrong_reselect_previous_per_min": 0.125,
+          "wrong_other_cell_per_min": 0.125,
+          "time_to_target_s": 0.7712442007068547
+        },
+        "ReFIT-KF": {
+          "bps_mean": 0.432575559930361,
+          "bps_ci95": [
+            0.19391318203774804,
+            0.671237937822974
+          ],
+          "correct_per_min": 5.0,
+          "incorrect_per_min": 1.375,
+          "wrong_reselect_previous_per_min": 0.0,
+          "wrong_other_cell_per_min": 1.375,
+          "time_to_target_s": 8.762261904761903
+        },
+        "KF": {
+          "bps_mean": 1.1634790922264884,
+          "bps_ci95": [
+            1.0143151060436053,
+            1.3275594770276598
+          ],
+          "correct_per_min": 12.125,
+          "incorrect_per_min": 2.375,
+          "wrong_reselect_previous_per_min": 0.0,
+          "wrong_other_cell_per_min": 2.375,
+          "time_to_target_s": 4.716582167832168
+        },
+        "Wiener": {
+          "bps_mean": 0.3729099654572078,
+          "bps_ci95": [
+            0.19391318203774804,
+            0.5369903502583793
+          ],
+          "correct_per_min": 7.125,
+          "incorrect_per_min": 4.125,
+          "wrong_reselect_previous_per_min": 0.375,
+          "wrong_other_cell_per_min": 3.75,
+          "time_to_target_s": 7.877488095238095
+        },
+        "GRU-16": {
+          "bps_mean": 0.238662377892613,
+          "bps_ci95": [
+            0.08949839170972987,
+            0.4027427626937844
+          ],
+          "correct_per_min": 3.125,
+          "incorrect_per_min": 1.125,
+          "wrong_reselect_previous_per_min": 0.0,
+          "wrong_other_cell_per_min": 1.125,
+          "time_to_target_s": 17.06457142857143
+        },
+        "GRU-64": {
+          "bps_mean": 0.31324437098405455,
+          "bps_ci95": [
+            0.16408038480117143,
+            0.4474919585486493
+          ],
+          "correct_per_min": 3.875,
+          "incorrect_per_min": 1.375,
+          "wrong_reselect_previous_per_min": 0.0,
+          "wrong_other_cell_per_min": 1.375,
+          "time_to_target_s": 13.12238095238095
+        }
+      },
+      "half_speed": {
+        "Oracle": {
+          "bps_mean": 8.48743081380605,
+          "bps_ci95": [
+            8.338266827623166,
+            8.65151119860722
+          ],
+          "correct_per_min": 71.75,
+          "incorrect_per_min": 0.625,
+          "wrong_reselect_previous_per_min": 0.5,
+          "wrong_other_cell_per_min": 0.125,
+          "time_to_target_s": 0.832440772404784
+        },
+        "ReFIT-KF": {
+          "bps_mean": 2.11812860379694,
+          "bps_ci95": [
+            2.0137138134689216,
+            2.2374597927432465
+          ],
+          "correct_per_min": 20.25,
+          "incorrect_per_min": 2.5,
+          "wrong_reselect_previous_per_min": 0.0,
+          "wrong_other_cell_per_min": 2.5,
+          "time_to_target_s": 2.9320829156223893
+        },
+        "KF": {
+          "bps_mean": 2.11812860379694,
+          "bps_ci95": [
+            1.9540482189957686,
+            2.2822089885981116
+          ],
+          "correct_per_min": 20.0,
+          "incorrect_per_min": 2.25,
+          "wrong_reselect_previous_per_min": 0.125,
+          "wrong_other_cell_per_min": 2.125,
+          "time_to_target_s": 2.9306453177380796
+        },
+        "Wiener": {
+          "bps_mean": 1.342475875645948,
+          "bps_ci95": [
+            1.05906430189847,
+            1.6109710507751376
+          ],
+          "correct_per_min": 17.0,
+          "incorrect_per_min": 5.75,
+          "wrong_reselect_previous_per_min": 0.375,
+          "wrong_other_cell_per_min": 5.375,
+          "time_to_target_s": 3.4500296160130715
+        },
+        "GRU-16": {
+          "bps_mean": 0.5519067488766676,
+          "bps_ci95": [
+            0.4176591613120727,
+            0.6861543364412623
+          ],
+          "correct_per_min": 6.625,
+          "incorrect_per_min": 2.0,
+          "wrong_reselect_previous_per_min": 0.125,
+          "wrong_other_cell_per_min": 1.875,
+          "time_to_target_s": 8.576698412698413
+        },
+        "GRU-64": {
+          "bps_mean": 0.5071575530218027,
+          "bps_ci95": [
+            0.3878263640754961,
+            0.6264887419681091
+          ],
+          "correct_per_min": 6.375,
+          "incorrect_per_min": 2.125,
+          "wrong_reselect_previous_per_min": 0.0,
+          "wrong_other_cell_per_min": 2.125,
+          "time_to_target_s": 8.193042658730159
+        }
+      },
+      "no_forward_model": {
+        "Oracle": {
+          "bps_mean": 0.0,
+          "bps_ci95": [
+            0.0,
+            0.0
+          ],
+          "correct_per_min": 0.0,
+          "incorrect_per_min": 0.625,
+          "wrong_reselect_previous_per_min": 0.0,
+          "wrong_other_cell_per_min": 0.625,
+          "time_to_target_s": null
+        },
+        "ReFIT-KF": {
+          "bps_mean": 1.5214726590654077,
+          "bps_ci95": [
+            1.2231446866996416,
+            1.7899678341945973
+          ],
+          "correct_per_min": 16.375,
+          "incorrect_per_min": 3.625,
+          "wrong_reselect_previous_per_min": 0.25,
+          "wrong_other_cell_per_min": 3.375,
+          "time_to_target_s": 3.628544062479918
+        },
+        "KF": {
+          "bps_mean": 2.401540177544418,
+          "bps_ci95": [
+            2.2374597927432465,
+            2.5805369609638777
+          ],
+          "correct_per_min": 23.5,
+          "incorrect_per_min": 3.375,
+          "wrong_reselect_previous_per_min": 0.125,
+          "wrong_other_cell_per_min": 3.25,
+          "time_to_target_s": 2.52668413116674
+        },
+        "Wiener": {
+          "bps_mean": 2.4761221706358594,
+          "bps_ci95": [
+            2.1330450024152285,
+            2.8490321360930677
+          ],
+          "correct_per_min": 30.25,
+          "incorrect_per_min": 9.5,
+          "wrong_reselect_previous_per_min": 0.0,
+          "wrong_other_cell_per_min": 9.5,
+          "time_to_target_s": 1.9579712462571235
+        },
+        "GRU-16": {
+          "bps_mean": 1.0739807005167585,
+          "bps_ci95": [
+            0.865151119860722,
+            1.2828102811727948
+          ],
+          "correct_per_min": 10.875,
+          "incorrect_per_min": 1.875,
+          "wrong_reselect_previous_per_min": 0.0,
+          "wrong_other_cell_per_min": 1.875,
+          "time_to_target_s": 5.181738095238095
+        },
+        "GRU-64": {
+          "bps_mean": 0.7458199309144156,
+          "bps_ci95": [
+            0.477324755785226,
+            0.999398707425317
+          ],
+          "correct_per_min": 9.0,
+          "incorrect_per_min": 2.75,
+          "wrong_reselect_previous_per_min": 0.125,
+          "wrong_other_cell_per_min": 2.625,
+          "time_to_target_s": 7.030670634920636
+        }
+      }
+    }
+  },
+  "gain_curves_click": {
+    "ReFIT-KF": {
+      "0.18": 1.2927545469183201,
+      "0.25": 1.670636645248291,
+      "0.35": 2.008741680596159,
+      "0.5": 2.1877384640156188,
+      "0.7": 1.789967834194597,
+      "1.0": 1.272866015427269,
+      "1.4": 0.49721328727627706,
+      "2.0": 0.03977706298210216,
+      "2.8": 0.01988853149105108,
+      "4.0": 0.0
+    },
+    "KF": {
+      "0.18": 2.3667352474350785,
+      "0.25": 2.4462893733992828,
+      "0.35": 2.247404058488772,
+      "0.5": 2.0882958065603634,
+      "0.7": 1.272866015427269,
+      "1.0": 0.2784394408747151,
+      "1.4": 0.19888531491051079,
+      "2.0": 0.0,
+      "2.8": 0.0,
+      "4.0": 0.0
+    },
+    "Wiener": {
+      "0.18": 0.8750953856062477,
+      "0.25": 1.3325316099004223,
+      "0.35": 1.4717513303377798,
+      "0.5": 1.5513054563019841,
+      "0.7": 1.3723086728825244,
+      "1.0": 0.8154297911330944,
+      "1.4": 0.19888531491051079,
+      "2.0": 0.05966559447315325,
+      "2.8": 0.0,
+      "4.0": 0.0
+    },
+    "GRU-16": {
+      "0.18": 0.2983279723657662,
+      "0.25": 0.49721328727627706,
+      "0.35": 0.7159871336778391,
+      "0.5": 0.8154297911330944,
+      "0.7": 0.7955412596420434,
+      "1.0": 0.5568788817494302,
+      "1.4": 0.31821650385681727,
+      "2.0": 0.2983279723657662,
+      "2.8": 0.15910825192840863,
+      "4.0": 0.07955412596420432
+    },
+    "GRU-64": {
+      "0.18": 0.05966559447315325,
+      "0.25": 0.07955412596420432,
+      "0.35": 0.19888531491051084,
+      "0.5": 0.2983279723657662,
+      "0.7": 0.5171018187673281,
+      "1.0": 0.6762100706957369,
+      "1.4": 0.8949839170972985,
+      "2.0": 0.5369903502583792,
+      "2.8": 0.33810503534786834,
+      "4.0": 0.33810503534786834
+    }
+  },
+  "hold_still_wander": {
+    "ReFIT-KF": {
+      "median_mm_over_0p5s": 22.97805592527474,
+      "p90_mm_over_0p5s": 34.95304382744686
+    },
+    "KF": {
+      "median_mm_over_0p5s": 21.991151096002294,
+      "p90_mm_over_0p5s": 37.893224046977735
+    },
+    "Wiener": {
+      "median_mm_over_0p5s": 17.521783306737454,
+      "p90_mm_over_0p5s": 36.96713110714516
+    },
+    "GRU-16": {
+      "median_mm_over_0p5s": 5.27567725885306,
+      "p90_mm_over_0p5s": 11.85355651572352
+    },
+    "GRU-64": {
+      "median_mm_over_0p5s": 3.8647903064156894,
+      "p90_mm_over_0p5s": 6.759058013632387
+    }
+  },
+  "open_loop_distribution_shift": {
+    "ReFIT-KF": {
+      "mc_maze_reaches": {
+        "r2": 0.17921021315475055,
+        "speed_ratio_when_moving": 0.23869833285343434,
+        "frac_bins_near_rest": 0.6351648351648351
+      },
+      "webgrid_commands": {
+        "r2": 0.2967312645223608,
+        "speed_ratio_when_moving": 0.26209899860173336,
+        "frac_bins_near_rest": 0.35
+      }
+    },
+    "KF": {
+      "mc_maze_reaches": {
+        "r2": 0.2829981240450223,
+        "speed_ratio_when_moving": 0.5321221874435837,
+        "frac_bins_near_rest": 0.6351648351648351
+      },
+      "webgrid_commands": {
+        "r2": 0.30158130350629386,
+        "speed_ratio_when_moving": 0.5467288080448447,
+        "frac_bins_near_rest": 0.35
+      }
+    },
+    "Wiener": {
+      "mc_maze_reaches": {
+        "r2": 0.5086050710875489,
+        "speed_ratio_when_moving": 0.5253547102578968,
+        "frac_bins_near_rest": 0.6351648351648351
+      },
+      "webgrid_commands": {
+        "r2": 0.557598882811666,
+        "speed_ratio_when_moving": 0.5357957723091231,
+        "frac_bins_near_rest": 0.35
+      }
+    },
+    "GRU-16": {
+      "mc_maze_reaches": {
+        "r2": 0.5158357641655478,
+        "speed_ratio_when_moving": 0.6048469532958312,
+        "frac_bins_near_rest": 0.6351648351648351
+      },
+      "webgrid_commands": {
+        "r2": 0.4453210280444154,
+        "speed_ratio_when_moving": 0.236361947861644,
+        "frac_bins_near_rest": 0.35
+      }
+    },
+    "GRU-64": {
+      "mc_maze_reaches": {
+        "r2": 0.46308504938266304,
+        "speed_ratio_when_moving": 0.46831490958076827,
+        "frac_bins_near_rest": 0.6351648351648351
+      },
+      "webgrid_commands": {
+        "r2": 0.43920045479992786,
+        "speed_ratio_when_moving": 0.22086548547489135,
+        "frac_bins_near_rest": 0.35
+      }
+    }
+  }
+}

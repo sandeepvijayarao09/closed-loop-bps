@@ -1,0 +1,340 @@
+{
+  "machine": {
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "processor": "arm",
+    "cpu": "Apple M5 Pro"
+  },
+  "bin_ms": 20,
+  "decoders": {
+    "KF": {
+      "cpp": {
+        "name": "KF",
+        "n_params": 550,
+        "check_pass": true,
+        "max_rel_err": 3.282e-07,
+        "steps": 100000,
+        "p50_us": 0.125,
+        "p99_us": 0.125,
+        "p999_us": 0.167,
+        "max_us": 5.166,
+        "paced_sleep": {
+          "ticks": 500,
+          "lateness_p50_us": 6673.0,
+          "lateness_p99_us": 9679.5,
+          "total_p99_us": 9680.0,
+          "total_max_us": 10020.5,
+          "deadline_misses": 0
+        },
+        "paced_spin": {
+          "ticks": 500,
+          "lateness_p50_us": 0.0,
+          "lateness_p99_us": 0.0,
+          "total_p99_us": 1.8,
+          "total_max_us": 3.5,
+          "deadline_misses": 0
+        }
+      },
+      "python_numpy": {
+        "p50_us": 1.291,
+        "p99_us": 1.417
+      }
+    },
+    "Wiener": {
+      "cpp": {
+        "name": "Wiener",
+        "n_params": 9284,
+        "check_pass": true,
+        "max_rel_err": 2.292e-06,
+        "steps": 100000,
+        "p50_us": 4.5,
+        "p99_us": 5.125,
+        "p999_us": 15.791,
+        "max_us": 62.541,
+        "paced_sleep": {
+          "ticks": 500,
+          "lateness_p50_us": 6674.2,
+          "lateness_p99_us": 9815.5,
+          "total_p99_us": 9820.8,
+          "total_max_us": 10031.7,
+          "deadline_misses": 0
+        },
+        "paced_spin": {
+          "ticks": 500,
+          "lateness_p50_us": 0.0,
+          "lateness_p99_us": 0.1,
+          "total_p99_us": 9.8,
+          "total_max_us": 15.2,
+          "deadline_misses": 0
+        }
+      },
+      "python_numpy": {
+        "p50_us": 8.167,
+        "p99_us": 9.084410000000009
+      }
+    },
+    "GRU-16": {
+      "cpp": {
+        "name": "GRU-16",
+        "n_params": 9998,
+        "check_pass": true,
+        "max_rel_err": 4.926e-07,
+        "steps": 100000,
+        "p50_us": 2.209,
+        "p99_us": 2.875,
+        "p999_us": 3.541,
+        "max_us": 21.666,
+        "paced_sleep": {
+          "ticks": 500,
+          "lateness_p50_us": 6669.5,
+          "lateness_p99_us": 9911.4,
+          "total_p99_us": 9914.8,
+          "total_max_us": 10020.8,
+          "deadline_misses": 0
+        },
+        "paced_spin": {
+          "ticks": 500,
+          "lateness_p50_us": 0.0,
+          "lateness_p99_us": 0.1,
+          "total_p99_us": 7.6,
+          "total_max_us": 9.6,
+          "deadline_misses": 0
+        }
+      },
+      "python_numpy": {
+        "p50_us": 8.167,
+        "p99_us": 9.375
+      }
+    },
+    "GRU-32": {
+      "cpp": {
+        "name": "GRU-32",
+        "n_params": 21166,
+        "check_pass": true,
+        "max_rel_err": 4.3e-07,
+        "steps": 100000,
+        "p50_us": 4.792,
+        "p99_us": 17.292,
+        "p999_us": 39.667,
+        "max_us": 237.5,
+        "paced_sleep": {
+          "ticks": 500,
+          "lateness_p50_us": 6670.4,
+          "lateness_p99_us": 9472.6,
+          "total_p99_us": 9478.9,
+          "total_max_us": 10021.5,
+          "deadline_misses": 0
+        },
+        "paced_spin": {
+          "ticks": 500,
+          "lateness_p50_us": 0.0,
+          "lateness_p99_us": 0.1,
+          "total_p99_us": 10.3,
+          "total_max_us": 12.1,
+          "deadline_misses": 0
+        }
+      },
+      "python_numpy": {
+        "p50_us": 8.583,
+        "p99_us": 9.87541000000001
+      }
+    },
+    "GRU-64": {
+      "cpp": {
+        "name": "GRU-64",
+        "n_params": 48110,
+        "check_pass": true,
+        "max_rel_err": 4.201e-07,
+        "steps": 100000,
+        "p50_us": 10.417,
+        "p99_us": 11.792,
+        "p999_us": 16.917,
+        "max_us": 46.041,
+        "paced_sleep": {
+          "ticks": 500,
+          "lateness_p50_us": 6667.6,
+          "lateness_p99_us": 9689.1,
+          "total_p99_us": 9704.5,
+          "total_max_us": 10031.7,
+          "deadline_misses": 0
+        },
+        "paced_spin": {
+          "ticks": 500,
+          "lateness_p50_us": 0.0,
+          "lateness_p99_us": 0.1,
+          "total_p99_us": 20.9,
+          "total_max_us": 37.4,
+          "deadline_misses": 0
+        }
+      },
+      "python_numpy": {
+        "p50_us": 9.333,
+        "p99_us": 11.625
+      }
+    },
+    "GRU-128": {
+      "cpp": {
+        "name": "GRU-128",
+        "n_params": 120430,
+        "check_pass": true,
+        "max_rel_err": 4.53e-07,
+        "steps": 100000,
+        "p50_us": 27.125,
+        "p99_us": 29.042,
+        "p999_us": 38.041,
+        "max_us": 72.292,
+        "paced_sleep": {
+          "ticks": 500,
+          "lateness_p50_us": 6663.0,
+          "lateness_p99_us": 9762.3,
+          "total_p99_us": 9797.3,
+          "total_max_us": 10043.6,
+          "deadline_misses": 0
+        },
+        "paced_spin": {
+          "ticks": 500,
+          "lateness_p50_us": 0.0,
+          "lateness_p99_us": 0.0,
+          "total_p99_us": 36.0,
+          "total_max_us": 47.6,
+          "deadline_misses": 0
+        }
+      },
+      "python_numpy": {
+        "p50_us": 12.333,
+        "p99_us": 15.79101
+      }
+    },
+    "GRU-256": {
+      "cpp": {
+        "name": "GRU-256",
+        "n_params": 338798,
+        "check_pass": true,
+        "max_rel_err": 5.139e-07,
+        "steps": 100000,
+        "p50_us": 91.75,
+        "p99_us": 99.125,
+        "p999_us": 109.584,
+        "max_us": 304.792,
+        "paced_sleep": {
+          "ticks": 500,
+          "lateness_p50_us": 6638.1,
+          "lateness_p99_us": 9853.8,
+          "total_p99_us": 9943.5,
+          "total_max_us": 10114.1,
+          "deadline_misses": 0
+        },
+        "paced_spin": {
+          "ticks": 500,
+          "lateness_p50_us": 0.0,
+          "lateness_p99_us": 0.0,
+          "total_p99_us": 116.7,
+          "total_max_us": 126.6,
+          "deadline_misses": 0
+        }
+      },
+      "python_numpy": {
+        "p50_us": 16.292,
+        "p99_us": 23.00042000000001
+      }
+    },
+    "GRU-64-cont": {
+      "cpp": {
+        "name": "GRU-64-cont",
+        "n_params": 48110,
+        "check_pass": true,
+        "max_rel_err": 4.314e-07,
+        "steps": 100000,
+        "p50_us": 10.375,
+        "p99_us": 12.083,
+        "p999_us": 18.625,
+        "max_us": 70.958,
+        "paced_sleep": {
+          "ticks": 500,
+          "lateness_p50_us": 6667.7,
+          "lateness_p99_us": 9871.6,
+          "total_p99_us": 9883.1,
+          "total_max_us": 10029.8,
+          "deadline_misses": 0
+        },
+        "paced_spin": {
+          "ticks": 500,
+          "lateness_p50_us": 0.0,
+          "lateness_p99_us": 0.0,
+          "total_p99_us": 16.5,
+          "total_max_us": 21.0,
+          "deadline_misses": 0
+        }
+      },
+      "python_numpy": {
+        "p50_us": 10.417,
+        "p99_us": 11.54241000000001
+      }
+    },
+    "ReFIT-KF": {
+      "cpp": {
+        "name": "ReFIT-KF",
+        "n_params": 550,
+        "check_pass": true,
+        "max_rel_err": 3.442e-07,
+        "steps": 100000,
+        "p50_us": 0.125,
+        "p99_us": 0.292,
+        "p999_us": 0.334,
+        "max_us": 14.625,
+        "paced_sleep": {
+          "ticks": 500,
+          "lateness_p50_us": 6673.4,
+          "lateness_p99_us": 9835.2,
+          "total_p99_us": 9835.6,
+          "total_max_us": 10017.7,
+          "deadline_misses": 0
+        },
+        "paced_spin": {
+          "ticks": 500,
+          "lateness_p50_us": 0.0,
+          "lateness_p99_us": 0.1,
+          "total_p99_us": 6.5,
+          "total_max_us": 10.5,
+          "deadline_misses": 0
+        }
+      },
+      "python_numpy": {
+        "p50_us": 1.291,
+        "p99_us": 1.834
+      }
+    },
+    "ReFIT-GRU-64": {
+      "cpp": {
+        "name": "ReFIT-GRU-64",
+        "n_params": 48110,
+        "check_pass": true,
+        "max_rel_err": 7.377e-07,
+        "steps": 100000,
+        "p50_us": 10.375,
+        "p99_us": 11.708,
+        "p999_us": 13.666,
+        "max_us": 46.667,
+        "paced_sleep": {
+          "ticks": 500,
+          "lateness_p50_us": 6668.6,
+          "lateness_p99_us": 9743.9,
+          "total_p99_us": 9755.5,
+          "total_max_us": 10029.4,
+          "deadline_misses": 0
+        },
+        "paced_spin": {
+          "ticks": 500,
+          "lateness_p50_us": 0.0,
+          "lateness_p99_us": 0.0,
+          "total_p99_us": 16.6,
+          "total_max_us": 23.4,
+          "deadline_misses": 0
+        }
+      },
+      "python_numpy": {
+        "p50_us": 9.083,
+        "p99_us": 11.334
+      }
+    }
+  }
+}
