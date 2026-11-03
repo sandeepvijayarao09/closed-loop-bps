@@ -2,7 +2,8 @@
 //
 // Dependency-free C++17, float32, all buffers allocated at load time: step()
 // never allocates, locks or does I/O, so its latency is just arithmetic.
-// Weight files are written by scripts/05_export.py (format documented there).
+// Weight files are written by cbps/export.py via scripts/05_export_bench.py
+// (format documented in cbps/export.py).
 #pragma once
 
 #include <cmath>
@@ -41,6 +42,9 @@ struct Reader {
         if (std::fread(&v, 4, 1, f) != 1) throw std::runtime_error("truncated file");
         return v;
     }
+    void expect_eof() {
+        if (std::fgetc(f) != EOF) throw std::runtime_error("trailing bytes after weights (format mismatch)");
+    }
     std::vector<float> floats(size_t n) {
         std::vector<float> v(n);
         if (n && std::fread(v.data(), 4, n, f) != n) throw std::runtime_error("truncated file");
@@ -60,45 +64,46 @@ inline void matvec(const float* A, const float* x, float* y, size_t rows, size_t
 inline float sigmoid(float x) { return 1.f / (1.f + std::exp(-x)); }
 }  // namespace detail
 
-// Steady-state velocity Kalman filter (also ReFIT-KF): x = M1 x + M2 (y - mu)
+// Steady-state Kalman filter, d-dim state (2 = velocity KF / ReFIT-KF, more =
+// lag-augmented KF-lag): x = M1 x + M2 (y - mu); output x[out0], x[out1].
 class KalmanDecoder : public Decoder {
 public:
-    std::vector<float> mu, M1, M2, yc;
-    float x[2] = {0.f, 0.f};
-    void reset() override { x[0] = x[1] = 0.f; }
+    uint32_t d = 2, out0 = 0, out1 = 1;
+    std::vector<float> mu, M1, M2, yc, x, xn, k;
+    void reset() override { std::fill(x.begin(), x.end(), 0.f); }
     void step(const float* counts, float* out) override {
         for (uint32_t i = 0; i < n_units; ++i) yc[i] = counts[i] - mu[i];
-        float k[2];
-        detail::matvec(M2.data(), yc.data(), k, 2, n_units);
-        float x0 = M1[0] * x[0] + M1[1] * x[1] + k[0];
-        float x1 = M1[2] * x[0] + M1[3] * x[1] + k[1];
-        x[0] = out[0] = x0;
-        x[1] = out[1] = x1;
+        detail::matvec(M2.data(), yc.data(), k.data(), d, n_units);
+        detail::matvec(M1.data(), x.data(), xn.data(), d, d);
+        for (uint32_t i = 0; i < d; ++i) x[i] = xn[i] + k[i];
+        out[0] = x[out0];
+        out[1] = x[out1];
     }
     size_t n_params() const override { return mu.size() + M1.size() + M2.size(); }
-    std::string name() const override { return "KF"; }
+    std::string name() const override { return d == 2 ? "KF" : "KF-lag"; }
 };
 
 // Wiener filter over the last n_hist bins: v = W [y_t - mu, ..., y_{t-H+1} - mu] + b
+// History lives in a double buffer: each bin is written twice, n_hist slots
+// apart, so the newest-first window is always one contiguous run of
+// n_hist * n_units floats and the inner loop is a plain dot product.
 class WienerDecoder : public Decoder {
 public:
     uint32_t n_hist = 0;
     std::vector<float> mu, W, b, ring;  // W: [2, n_hist * n_units], lag-major like the Python design matrix
-    uint32_t head = 0;                   // ring slot holding the newest bin
+    uint32_t head = 0;                   // slot of the newest bin, in [0, n_hist)
     void reset() override { std::fill(ring.begin(), ring.end(), 0.f); head = 0; }
     void step(const float* counts, float* out) override {
         head = (head + n_hist - 1) % n_hist;
-        float* slot = ring.data() + size_t(head) * n_units;
-        for (uint32_t i = 0; i < n_units; ++i) slot[i] = counts[i] - mu[i];
-        for (int d = 0; d < 2; ++d) {
-            float acc = b[d];
-            const float* w = W.data() + size_t(d) * n_hist * n_units;
-            for (uint32_t k = 0; k < n_hist; ++k) {  // k = bins ago
-                const float* s = ring.data() + size_t((head + k) % n_hist) * n_units;
-                const float* wk = w + size_t(k) * n_units;
-                for (uint32_t i = 0; i < n_units; ++i) acc += wk[i] * s[i];
-            }
-            out[d] = acc;
+        float* s0 = ring.data() + size_t(head) * n_units;
+        float* s1 = s0 + size_t(n_hist) * n_units;
+        for (uint32_t i = 0; i < n_units; ++i) s0[i] = s1[i] = counts[i] - mu[i];
+        const size_t len = size_t(n_hist) * n_units;
+        for (int dd = 0; dd < 2; ++dd) {
+            const float* w = W.data() + size_t(dd) * len;
+            float acc = b[dd];
+            for (size_t j = 0; j < len; ++j) acc += w[j] * s0[j];
+            out[dd] = acc;
         }
     }
     size_t n_params() const override { return mu.size() + W.size() + b.size(); }
@@ -135,6 +140,7 @@ public:
 };
 
 // File: "CBPS" | u32 version=1 | u32 kind | u32 n_units | u32 param | float32 arrays...
+// Truncated files and files with bytes left over both fail to load.
 inline std::unique_ptr<Decoder> load(const std::string& path) {
     detail::Reader r(path);
     char magic[4];
@@ -145,20 +151,31 @@ inline std::unique_ptr<Decoder> load(const std::string& path) {
     if (kind == KF) {
         auto d = std::make_unique<KalmanDecoder>();
         d->n_units = U;
+        d->d = P ? P : 2;
         d->mu = r.floats(U);
-        d->M1 = r.floats(4);
-        d->M2 = r.floats(2 * U);
+        d->M1 = r.floats(size_t(d->d) * d->d);
+        d->M2 = r.floats(size_t(d->d) * U);
+        auto o = r.floats(2);
+        d->out0 = uint32_t(o[0]);
+        d->out1 = uint32_t(o[1]);
+        if (d->out0 >= d->d || d->out1 >= d->d) throw std::runtime_error("bad output index");
         d->yc.assign(U, 0.f);
+        d->x.assign(d->d, 0.f);
+        d->xn.assign(d->d, 0.f);
+        d->k.assign(d->d, 0.f);
+        r.expect_eof();
         return d;
     }
     if (kind == WIENER) {
+        if (P == 0) throw std::runtime_error("n_hist must be > 0");
         auto d = std::make_unique<WienerDecoder>();
         d->n_units = U;
         d->n_hist = P;
         d->mu = r.floats(U);
         d->W = r.floats(2 * size_t(P) * U);
         d->b = r.floats(2);
-        d->ring.assign(size_t(P) * U, 0.f);
+        d->ring.assign(2 * size_t(P) * U, 0.f);
+        r.expect_eof();
         return d;
     }
     if (kind == GRU) {
@@ -178,6 +195,7 @@ inline std::unique_ptr<Decoder> load(const std::string& path) {
         d->h.assign(P, 0.f);
         d->gi.assign(3 * P, 0.f);
         d->gh.assign(3 * P, 0.f);
+        r.expect_eof();
         return d;
     }
     throw std::runtime_error("unknown decoder kind");

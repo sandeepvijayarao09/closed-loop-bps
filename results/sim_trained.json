@@ -1,0 +1,146 @@
+{
+  "note": "Confound control: is the GRUs' closed-loop loss simulator mismatch or distribution shift?",
+  "decoders": {
+    "KF": {
+      "sim_test_r2": 0.27692072383238303,
+      "real_test_r2": 0.19522832421952502,
+      "n_params": 550,
+      "closed_loop_click": {
+        "gain": 0.35,
+        "bps_mean": 2.389607058649787,
+        "bps_ci95": [
+          2.2732591494271386,
+          2.5029716881487785
+        ],
+        "n_sessions": 20,
+        "correct_per_min": 25.15,
+        "incorrect_per_min": 5.125,
+        "time_to_target_s": 2.364372400828333,
+        "paired_diff_vs_KF": {
+          "mean": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "KF-lag": {
+      "sim_test_r2": 0.6095090279625376,
+      "real_test_r2": 0.5370863747742013,
+      "n_params": 2510,
+      "closed_loop_click": {
+        "gain": 0.35,
+        "bps_mean": 3.078744674814707,
+        "bps_ci95": [
+          2.965380045315716,
+          3.192109304313699
+        ],
+        "n_sessions": 20,
+        "correct_per_min": 32.775,
+        "incorrect_per_min": 6.975,
+        "time_to_target_s": 1.8187011783196418,
+        "paired_diff_vs_KF": {
+          "mean": 0.68913761616492,
+          "ci95": [
+            0.5041742732981449,
+            0.8621678401370645
+          ]
+        }
+      }
+    },
+    "Wiener": {
+      "sim_test_r2": 0.6207125000537116,
+      "real_test_r2": 0.516752747712844,
+      "n_params": 9284,
+      "closed_loop_click": {
+        "gain": 0.5,
+        "bps_mean": 2.5566707231746166,
+        "bps_ci95": [
+          2.4104900167153906,
+          2.699868149910184
+        ],
+        "n_sessions": 20,
+        "correct_per_min": 32.5,
+        "incorrect_per_min": 11.075,
+        "time_to_target_s": 1.8289324742495547,
+        "paired_diff_vs_KF": {
+          "mean": 0.16706366452482913,
+          "ci95": [
+            -0.03579935668389187,
+            0.3758932451808653
+          ]
+        }
+      }
+    },
+    "GRU-16": {
+      "sim_test_r2": 0.7980247481038972,
+      "real_test_r2": 0.6370356690501534,
+      "n_params": 9998,
+      "closed_loop_click": {
+        "gain": 0.35,
+        "bps_mean": 1.449873945697624,
+        "bps_ci95": [
+          1.3125684964162798,
+          1.587104812985876
+        ],
+        "n_sessions": 20,
+        "correct_per_min": 16.25,
+        "incorrect_per_min": 4.1,
+        "time_to_target_s": 3.66489764335219,
+        "paired_diff_vs_KF": {
+          "mean": -0.9397331129521638,
+          "ci95": [
+            -1.115821198641057,
+            -0.7577530498090461
+          ]
+        }
+      }
+    },
+    "GRU-64": {
+      "sim_test_r2": 0.7875456889509092,
+      "real_test_r2": 0.6053130647405844,
+      "n_params": 48110,
+      "closed_loop_click": {
+        "gain": 0.7,
+        "bps_mean": 2.147961401033517,
+        "bps_ci95": [
+          1.9928308554033183,
+          2.291158827769084
+        ],
+        "n_sessions": 20,
+        "correct_per_min": 24.125,
+        "incorrect_per_min": 6.125,
+        "time_to_target_s": 2.4671913629653384,
+        "paired_diff_vs_KF": {
+          "mean": -0.24164565761627052,
+          "ci95": [
+            -0.4116926018647574,
+            -0.0775652728150992
+          ]
+        }
+      }
+    },
+    "Oracle": {
+      "closed_loop_click": {
+        "gain": 1.0,
+        "bps_mean": 9.233250744720465,
+        "bps_ci95": [
+          9.158668751629023,
+          9.304849458088249
+        ],
+        "n_sessions": 20,
+        "correct_per_min": 78.45,
+        "incorrect_per_min": 1.075,
+        "time_to_target_s": 0.7619645544513678,
+        "paired_diff_vs_KF": {
+          "mean": 6.843643686070676,
+          "ci95": [
+            6.718271355683963,
+            6.96595815474064
+          ]
+        }
+      }
+    }
+  }
+}

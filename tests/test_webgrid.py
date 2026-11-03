@@ -46,3 +46,12 @@ def test_refit_labels_point_at_target_and_zero_on_target():
     lab = refit_labels(p, tgt, v, cfg)
     assert np.allclose(lab[0], [30.0, 0.0])
     assert np.allclose(lab[1], 0.0)
+
+
+def test_switch_mask_blanks_bins_after_target_change():
+    from cbps.refit import switch_mask
+    tgt = np.zeros((30, 2))
+    tgt[10:] = [5.0, 5.0]
+    tgt[25:] = [1.0, 1.0]
+    m = switch_mask(tgt, 4)
+    assert m[:10].all() and not m[10:14].any() and m[14:25].all() and not m[25:29].any() and m[29]

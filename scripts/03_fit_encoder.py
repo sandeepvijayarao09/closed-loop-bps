@@ -7,7 +7,6 @@ If the simulator were perfect the two R^2 columns would match.
 Writes artifacts/encoder.pkl, results/user_model.json, results/encoder_fidelity.json.
 Usage: python scripts/03_fit_encoder.py
 """
-import itertools
 import sys
 from pathlib import Path
 
@@ -18,48 +17,26 @@ from cbps import BIN_S, data  # noqa: E402
 from cbps.encoding import ENC_LAGS, bits_per_spike, fit_encoding_model, stacked_features  # noqa: E402
 from cbps.io import load_pickle, save_json, save_pickle  # noqa: E402
 from cbps.metrics import r2  # noqa: E402
+from cbps.webgrid import fit_reach_policy  # noqa: E402
 
 E = data.EVAL_START
 
 
-def chrono_split_idx(trial_idx):
-    order = np.argsort(trial_idx)
-    n = len(order)
-    a, b = int(round(data.SPLIT_FRACS[0] * n)), int(round(sum(data.SPLIT_FRACS[:2]) * n))
-    return [np.sort(order[:a]), np.sort(order[a:b]), np.sort(order[b:])]
-
-
 def fit_user(tr):
-    """Grid-search (vmax, tau, tau_m) so simulated straight reaches match the real mean speed profile."""
-    def prep(t):
-        m = t.n_barriers == 0
-        on = data.PRE_BINS
-        return t.P[m][:, on], t.P[m][:, -1], np.linalg.norm(t.V[m], axis=-1)[:, on:on + 40].mean(0)
-
-    def sim(vmax, tau, tm, s0, g, T=40):
-        p, c, out = s0.copy(), np.zeros_like(s0), []
-        for _ in range(T):
-            e = g - p
-            d = np.linalg.norm(e, axis=1, keepdims=True)
-            c = c + (vmax * np.tanh(d / (vmax * tau)) * e / np.maximum(d, 1e-9) - c) * BIN_S / tm
-            p = p + c * BIN_S
-            out.append(np.linalg.norm(c, axis=1))
-        return np.stack(out, 1).mean(0)
-
-    s0, g, prof = prep(tr)
-    grid = itertools.product([600, 800, 1000, 1200, 1500, 2000], [0.04, 0.06, 0.08, 0.1, 0.13, 0.16, 0.2],
-                             [0.02, 0.04, 0.06, 0.08, 0.1, 0.12])
-    loss, vmax, tau, tm = min((np.mean((sim(*p, s0, g) - prof) ** 2), *p) for p in grid)
-    return {"vmax": vmax, "tau": tau, "tau_m": tm, "train_rmse_mm_s": float(np.sqrt(loss)),
-            "real_profile": prof, "sim_profile": sim(vmax, tau, tm, s0, g),
-            "n_straight_reaches": int((tr.n_barriers == 0).sum()),
+    """User reach policy fit to the mean speed profile of real straight reaches (train split)."""
+    m = tr.n_barriers == 0
+    on = data.PRE_BINS
+    prof = np.linalg.norm(tr.V[m], axis=-1)[:, on:on + 40].mean(0)
+    vmax, tau, tm, rmse, sim = fit_reach_policy(tr.P[m][:, on], tr.P[m][:, -1], prof)
+    return {"vmax": vmax, "tau": tau, "tau_m": tm, "train_rmse_mm_s": rmse, "real_profile": prof,
+            "sim_profile": sim, "n_straight_reaches": int(m.sum()),
             "fit": "least squares on mean speed profile, 0-800 ms after onset, train split straight reaches"}
 
 
 def main():
     full = data.load(data.DECODE_LAG)
     Vs = data.velocity_stack(ENC_LAGS)
-    itr, iva, ite = chrono_split_idx(full.trial_idx)
+    itr, iva, ite = data.split_indices(full)
     tr, te = full.subset(itr), full.subset(ite)
     enc = fit_encoding_model(tr.X, Vs[itr])
     save_pickle("encoder.pkl", enc)
@@ -78,9 +55,11 @@ def main():
     rng = np.random.default_rng(123)
     Xs = enc.simulate_from_stack(Vs[ite], rng, noise_scale=1.0)
     rows = {}
+    te0_V = data.load(0).subset(ite).V  # target of the lag-0 ablations
     for name, d in decs.items():
-        rows[name] = {"real_test_r2": r2(te.V[:, E:], d.predict(te.X)[:, E:]),
-                      "sim_test_r2": r2(te.V[:, E:], d.predict(Xs)[:, E:])}
+        tv = te0_V if name.endswith("lag0") else te.V
+        rows[name] = {"real_test_r2": r2(tv[:, E:], d.predict(te.X)[:, E:]),
+                      "sim_test_r2": r2(tv[:, E:], d.predict(Xs)[:, E:])}
         print(name, rows[name])
     sr, ss = te.X[:, E:].reshape(-1, Y.shape[1]), Xs[:, E:].reshape(-1, Y.shape[1])
     save_json("encoder_fidelity.json", {

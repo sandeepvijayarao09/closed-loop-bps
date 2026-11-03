@@ -37,58 +37,85 @@ class Decoder:
 
 
 # --------------------------------------------------------------------------
-# Velocity Kalman filter (Wu et al. 2006; velocity-only state as in ReFIT).
+# Kalman filters (Wu et al. 2006). Velocity-only state as in ReFIT (Gilja 2012),
+# or a lag-augmented state holding velocity at several leads.
 # --------------------------------------------------------------------------
 class KalmanVelocity(Decoder):
     """x_t = A x_{t-1} + w,  y_t - mu = H x_t + q.  Runs at steady-state gain.
 
     Steady state: x_t = M1 x_{t-1} + M2 (y_t - mu) with M1 = (I - K H) A,
-    M2 = K. That is a 2x2 and a 2xU mat-vec per bin, which is what runs in the
-    C++ loop. Kalman gains converge within ~1 s of bins, so the steady-state
-    and time-varying filters agree after the burn-in we already exclude.
+    M2 = K: a d x d and a d x U mat-vec per bin, which is what runs in the C++
+    loop. The decoded velocity is x[out]. Gains converge within ~1 s of bins,
+    so steady-state and time-varying filters agree after the scored burn-in.
     """
     name = "KF"
 
-    def __init__(self, A, W, H, Q, mu):
+    def __init__(self, A, W, H, Q, mu, out=(0, 1)):
         self.A, self.W, self.H, self.Q, self.mu = A, W, H, Q, mu
+        self.out = np.array(out)
+        self.d = A.shape[0]
         self.K = steady_state_gain(A, W, H, Q)
-        self.M1 = (np.eye(2) - self.K @ H) @ A
+        self.M1 = (np.eye(self.d) - self.K @ H) @ A
         self.M2 = self.K
-        self.x = np.zeros(2)
+        self.x = np.zeros(self.d)
 
     @classmethod
-    def fit(cls, X: np.ndarray, V: np.ndarray, AW: tuple | None = None, ridge: float = 1e-3):
-        """X [N,T,U] counts, V [N,T,2] velocity. AW optionally fixes the dynamics."""
+    def fit(cls, X: np.ndarray, S: np.ndarray, AW: tuple | None = None, ridge: float = 1e-3, out=(0, 1),
+            mask: np.ndarray | None = None):
+        """X [N,T,U] counts, S [N,T,d] state (velocity, or velocity at several leads).
+
+        AW optionally fixes the dynamics. mask [N,T] drops bins from the
+        observation-model fit (used by ReFIT to skip mislabelled bins).
+        """
+        d = S.shape[-1]
         Y = X.reshape(-1, X.shape[-1]).astype(np.float64)
-        Vf = V.reshape(-1, 2).astype(np.float64)
-        mu = Y.mean(0)
+        Sf = S.reshape(-1, d).astype(np.float64)
+        m = np.ones(len(Y), bool) if mask is None else mask.reshape(-1)
+        mu = Y[m].mean(0)
         Yc = Y - mu
         if AW is None:
-            x0 = V[:, :-1].reshape(-1, 2)
-            x1 = V[:, 1:].reshape(-1, 2)
+            x0 = S[:, :-1].reshape(-1, d)
+            x1 = S[:, 1:].reshape(-1, d)
             A = np.linalg.lstsq(x0, x1, rcond=None)[0].T
-            W = np.cov((x1 - x0 @ A.T).T)
+            W = np.cov((x1 - x0 @ A.T).T).reshape(d, d) + 1e-6 * np.eye(d)
         else:
             A, W = AW
-        H = np.linalg.lstsq(Vf, Yc, rcond=None)[0].T  # [U,2]
-        R = Yc - Vf @ H.T
+        H = np.linalg.lstsq(Sf[m], Yc[m], rcond=None)[0].T  # [U, d]
+        R = Yc[m] - Sf[m] @ H.T
         Q = np.cov(R.T) + ridge * np.eye(Y.shape[1])
-        return cls(A, W, H, Q, mu)
+        return cls(A, W, H, Q, mu, out)
+
+    @classmethod
+    def fit_lagged(cls, X: np.ndarray, Vs: np.ndarray, leads, decode_lead: int, **kw):
+        """Lag-augmented state: Vs [N,T,L,2] velocity at `leads` bins ahead of the spikes.
+
+        M1 neurons encode velocity over ~0-160 ms of lead (see encoding.py), and
+        a velocity-only KF's observation model cannot express that. Putting the
+        velocity at several leads in the state lets H do so; the decoded output
+        is the entry at `decode_lead`, the same target every other decoder has.
+        """
+        leads = list(leads)
+        S = Vs.reshape(Vs.shape[:2] + (-1,))
+        k = leads.index(decode_lead)
+        dec = cls.fit(X, S, out=(2 * k, 2 * k + 1), **kw)
+        dec.name = "KF-lag"
+        dec.leads = leads
+        return dec
 
     def reset(self):
-        self.x = np.zeros(2)
+        self.x = np.zeros(self.d)
 
     def step(self, y):
         self.x = self.M1 @ self.x + self.M2 @ (y - self.mu)
-        return self.x
+        return self.x[self.out]
 
     def predict(self, X):  # vectorized over trials, same recursion
         Yc = X - self.mu
         out = np.zeros(X.shape[:-1] + (2,))
-        x = np.zeros((X.shape[0], 2))
+        x = np.zeros((X.shape[0], self.d))
         for t in range(X.shape[1]):
             x = x @ self.M1.T + Yc[:, t] @ self.M2.T
-            out[:, t] = x
+            out[:, t] = x[:, self.out]
         return out
 
     @property
@@ -132,11 +159,10 @@ class Wiener(Decoder):
         return out
 
     @classmethod
-    def fit(cls, X, V, n_hist=5, alpha=1.0):
+    def fit_path(cls, X, V, n_hist, alphas):
+        """One pass over the data, one solve per ridge strength (for hyperparameter sweeps)."""
         mu = X.reshape(-1, X.shape[-1]).mean(0)
         vm = V[:, n_hist:].reshape(-1, 2).mean(0)
-        # Accumulate normal equations in chunks of trials: the full design matrix
-        # is ~n_trials*T x (n_hist*U) and would not fit in memory at long histories.
         k = n_hist * X.shape[-1]
         G, b, n = np.zeros((k, k)), np.zeros((k, 2)), 0
         for i in range(0, len(X), 100):
@@ -144,8 +170,11 @@ class Wiener(Decoder):
             G += D.T @ D
             b += D.T @ (V[i:i + 100, n_hist:].reshape(-1, 2) - vm)
             n += len(D)
-        Wt = np.linalg.solve(G + alpha * n * np.eye(k), b)
-        return cls(Wt, vm, mu, n_hist)
+        return [cls(np.linalg.solve(G + a * n * np.eye(k), b), vm, mu, n_hist) for a in alphas]
+
+    @classmethod
+    def fit(cls, X, V, n_hist=5, alpha=1.0):
+        return cls.fit_path(X, V, n_hist, [alpha])[0]
 
     def reset(self):
         self.buf[:] = 0

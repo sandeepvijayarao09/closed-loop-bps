@@ -1,6 +1,8 @@
 """Export decoders to rt/models, build the C++ loop, verify vs Python, benchmark latency.
 
-Writes results/latency.json. Usage: python scripts/05_export_bench.py [--steps 100000] [--paced-seconds 10]
+Compute latency (batched and per call) for every decoder; then 60 s paced 20 ms loops for the
+lightest and heaviest decoder, with a default user-space sleep and with a Mach real-time thread.
+Writes results/latency.json. Usage: python scripts/05_export_bench.py [--steps 100000] [--paced-seconds 60]
 """
 import argparse
 import json
@@ -36,10 +38,21 @@ def python_step_latency(dec, X, n=5000):
     return {"p50_us": float(np.percentile(ts, 50)), "p99_us": float(np.percentile(ts, 99))}
 
 
+def bench(fn, label, *extra):
+    js = MODELS / f"{fn}_latency{'_'.join(('',) + tuple(e.strip('-') for e in extra if e.startswith('--')))}.json"
+    r = subprocess.run([str(RT / "build" / "bench"), str(MODELS / f"{fn}.bin"), str(MODELS / f"{fn}_ref.bin"),
+                        "--json", str(js), "--label", label, *extra], capture_output=True, text=True)
+    print(r.stdout.strip())
+    if r.returncode != 0:
+        raise SystemExit(f"{label}: bench failed / C++ output does not match Python\n{r.stderr}")
+    return json.loads(js.read_text())
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--steps", type=int, default=100000)
-    ap.add_argument("--paced-seconds", type=float, default=10.0)
+    ap.add_argument("--paced-seconds", type=float, default=60.0)
+    ap.add_argument("--paced-decoders", nargs="+", default=["KF", "GRU-256"])
     args = ap.parse_args()
     decs = load_pickle("decoders_cl.pkl")
     decs.pop("Oracle", None)
@@ -50,20 +63,19 @@ def main():
     out = {"machine": {"platform": platform.platform(), "processor": platform.processor(),
                        "cpu": subprocess.run(["sysctl", "-n", "machdep.cpu.brand_string"], capture_output=True,
                                              text=True).stdout.strip() if sys.platform == "darwin" else ""},
-           "bin_ms": 20, "decoders": {}}
+           "bin_ms": 20, "paced_seconds": args.paced_seconds, "decoders": {}, "paced": {}}
     for name, dec in decs.items():
         fn = name.replace("-", "_").lower()
         export(dec, MODELS / f"{fn}.bin")
         export_reference(dec, X, MODELS / f"{fn}_ref.bin")
-        js = MODELS / f"{fn}_latency.json"
-        r = subprocess.run([str(RT / "build" / "bench"), str(MODELS / f"{fn}.bin"), str(MODELS / f"{fn}_ref.bin"),
-                            "--steps", str(args.steps), "--paced-seconds", str(args.paced_seconds), "--json", str(js), "--label", name],
-                           capture_output=True, text=True)
-        print(r.stdout.strip())
-        cpp = json.loads(js.read_text())
-        out["decoders"][name] = {"cpp": cpp, "python_numpy": python_step_latency(dec, X)}
-        if r.returncode != 0:
-            raise SystemExit(f"{name}: C++ output does not match Python")
+        out["decoders"][name] = {"cpp": bench(fn, name, "--steps", str(args.steps)),
+                                 "python_numpy": python_step_latency(dec, X)}
+    # Paced 20 ms loop, long runs: default user-space sleep vs a Mach real-time thread.
+    for name in args.paced_decoders:
+        fn = name.replace("-", "_").lower()
+        out["paced"][name] = {
+            "default": bench(fn, name, "--steps", "20000", "--paced-seconds", str(args.paced_seconds)),
+            "rt_thread": bench(fn, name, "--steps", "20000", "--paced-seconds", str(args.paced_seconds), "--rt")}
     save_json("latency.json", out)
 
 

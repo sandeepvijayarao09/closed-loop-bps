@@ -144,13 +144,17 @@ def load(lag: int, path: Path = PROCESSED) -> Trials:
                   d["target"][keep], d["n_barriers"][keep], keep)
 
 
-def split(tr: Trials) -> tuple[Trials, Trials, Trials]:
+def split_indices(tr: Trials) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    """Row indices of the chronological train / val / test trials."""
     n = len(tr.trial_idx)
     order = np.argsort(tr.trial_idx)
     a = int(round(SPLIT_FRACS[0] * n))
     b = int(round((SPLIT_FRACS[0] + SPLIT_FRACS[1]) * n))
-    idx = [order[:a], order[a:b], order[b:]]
-    return tuple(tr.subset(np.sort(i)) for i in idx)
+    return np.sort(order[:a]), np.sort(order[a:b]), np.sort(order[b:])
+
+
+def split(tr: Trials) -> tuple[Trials, Trials, Trials]:
+    return tuple(tr.subset(i) for i in split_indices(tr))
 
 
 # Decoders predict velocity DECODE_LAG bins after the spikes (100 ms). Chosen on

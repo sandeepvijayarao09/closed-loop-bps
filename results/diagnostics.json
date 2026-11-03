@@ -31,10 +31,11 @@
     "gains": {
       "Oracle": 1.0,
       "ReFIT-KF": 0.5,
-      "KF": 0.25,
+      "KF": 0.35,
+      "KF-lag": 0.35,
       "Wiener": 0.5,
-      "GRU-16": 0.5,
-      "GRU-64": 1.4
+      "GRU-16": 0.7,
+      "GRU-64": 4.0
     },
     "results": {
       "g12_d0.3": {
@@ -56,11 +57,11 @@
             0.0,
             0.0
           ],
-          "correct_per_min": 17.875,
-          "incorrect_per_min": 85.0,
-          "wrong_reselect_previous_per_min": 12.5,
-          "wrong_other_cell_per_min": 72.5,
-          "time_to_target_s": 3.2757730074867473
+          "correct_per_min": 18.375,
+          "incorrect_per_min": 84.375,
+          "wrong_reselect_previous_per_min": 11.375,
+          "wrong_other_cell_per_min": 73.0,
+          "time_to_target_s": 3.215886460944027
         },
         "KF": {
           "bps_mean": 0.0,
@@ -68,11 +69,23 @@
             0.0,
             0.0
           ],
-          "correct_per_min": 22.0,
-          "incorrect_per_min": 86.625,
-          "wrong_reselect_previous_per_min": 19.25,
-          "wrong_other_cell_per_min": 67.375,
-          "time_to_target_s": 2.6723096123460826
+          "correct_per_min": 22.25,
+          "incorrect_per_min": 76.625,
+          "wrong_reselect_previous_per_min": 17.375,
+          "wrong_other_cell_per_min": 59.25,
+          "time_to_target_s": 2.635105735930736
+        },
+        "KF-lag": {
+          "bps_mean": 0.0,
+          "bps_ci95": [
+            0.0,
+            0.0
+          ],
+          "correct_per_min": 27.25,
+          "incorrect_per_min": 76.375,
+          "wrong_reselect_previous_per_min": 19.75,
+          "wrong_other_cell_per_min": 56.625,
+          "time_to_target_s": 2.1646508978569328
         },
         "Wiener": {
           "bps_mean": 0.0,
@@ -92,11 +105,11 @@
             0.0,
             0.0
           ],
-          "correct_per_min": 8.25,
-          "incorrect_per_min": 129.125,
-          "wrong_reselect_previous_per_min": 7.25,
-          "wrong_other_cell_per_min": 121.875,
-          "time_to_target_s": 6.700193452380953
+          "correct_per_min": 10.0,
+          "incorrect_per_min": 118.0,
+          "wrong_reselect_previous_per_min": 7.625,
+          "wrong_other_cell_per_min": 110.375,
+          "time_to_target_s": 5.950947649572649
         },
         "GRU-64": {
           "bps_mean": 0.0,
@@ -104,11 +117,11 @@
             0.0,
             0.0
           ],
-          "correct_per_min": 9.0,
-          "incorrect_per_min": 115.0,
-          "wrong_reselect_previous_per_min": 5.0,
-          "wrong_other_cell_per_min": 110.0,
-          "time_to_target_s": 6.655726266788767
+          "correct_per_min": 4.625,
+          "incorrect_per_min": 58.5,
+          "wrong_reselect_previous_per_min": 1.125,
+          "wrong_other_cell_per_min": 57.375,
+          "time_to_target_s": 9.854553571428571
         }
       },
       "g12_d0.5": {
@@ -130,11 +143,11 @@
             0.0,
             0.0
           ],
-          "correct_per_min": 15.0,
+          "correct_per_min": 14.625,
           "incorrect_per_min": 34.875,
-          "wrong_reselect_previous_per_min": 1.375,
-          "wrong_other_cell_per_min": 33.5,
-          "time_to_target_s": 3.8420091575091577
+          "wrong_reselect_previous_per_min": 1.0,
+          "wrong_other_cell_per_min": 33.875,
+          "time_to_target_s": 3.989610271672772
         },
         "KF": {
           "bps_mean": 0.0,
@@ -142,11 +155,23 @@
             0.0,
             0.0
           ],
-          "correct_per_min": 19.25,
-          "incorrect_per_min": 31.25,
-          "wrong_reselect_previous_per_min": 2.625,
-          "wrong_other_cell_per_min": 28.625,
-          "time_to_target_s": 3.041507575757576
+          "correct_per_min": 19.125,
+          "incorrect_per_min": 26.125,
+          "wrong_reselect_previous_per_min": 1.25,
+          "wrong_other_cell_per_min": 24.875,
+          "time_to_target_s": 3.0432412280701753
+        },
+        "KF-lag": {
+          "bps_mean": 0.20882958065603635,
+          "bps_ci95": [
+            0.0,
+            0.5220739516400908
+          ],
+          "correct_per_min": 23.375,
+          "incorrect_per_min": 25.75,
+          "wrong_reselect_previous_per_min": 1.875,
+          "wrong_other_cell_per_min": 23.875,
+          "time_to_target_s": 2.507131929121603
         },
         "Wiener": {
           "bps_mean": 0.0,
@@ -166,11 +191,11 @@
             0.0,
             0.0
           ],
-          "correct_per_min": 6.75,
-          "incorrect_per_min": 65.125,
+          "correct_per_min": 7.75,
+          "incorrect_per_min": 57.875,
           "wrong_reselect_previous_per_min": 0.5,
-          "wrong_other_cell_per_min": 64.625,
-          "time_to_target_s": 8.911270833333333
+          "wrong_other_cell_per_min": 57.375,
+          "time_to_target_s": 7.644683441558442
         },
         "GRU-64": {
           "bps_mean": 0.0,
@@ -178,11 +203,11 @@
             0.0,
             0.0
           ],
-          "correct_per_min": 7.75,
-          "incorrect_per_min": 55.125,
-          "wrong_reselect_previous_per_min": 0.5,
-          "wrong_other_cell_per_min": 54.625,
-          "time_to_target_s": 8.103063762626263
+          "correct_per_min": 2.75,
+          "incorrect_per_min": 20.0,
+          "wrong_reselect_previous_per_min": 0.0,
+          "wrong_other_cell_per_min": 20.0,
+          "time_to_target_s": 11.05109523809524
         }
       },
       "g12_d1.0": {
@@ -199,28 +224,40 @@
           "time_to_target_s": 1.5495664642375169
         },
         "ReFIT-KF": {
-          "bps_mean": 0.19391318203774804,
+          "bps_mean": 0.02983279723657662,
           "bps_ci95": [
-            0.08949839170972987,
-            0.29832797236576625
+            0.0,
+            0.08949839170972987
           ],
-          "correct_per_min": 9.125,
-          "incorrect_per_min": 8.875,
+          "correct_per_min": 7.875,
+          "incorrect_per_min": 10.375,
           "wrong_reselect_previous_per_min": 0.125,
-          "wrong_other_cell_per_min": 8.75,
-          "time_to_target_s": 6.277505772005772
+          "wrong_other_cell_per_min": 10.25,
+          "time_to_target_s": 6.8225565476190475
         },
         "KF": {
-          "bps_mean": 1.0739807005167585,
+          "bps_mean": 1.0143151060436053,
           "bps_ci95": [
-            0.8949839170972986,
-            1.2828102811727948
+            0.8204019240058571,
+            1.193311889463065
           ],
-          "correct_per_min": 15.0,
-          "incorrect_per_min": 6.0,
-          "wrong_reselect_previous_per_min": 0.125,
-          "wrong_other_cell_per_min": 5.875,
-          "time_to_target_s": 3.888924692954105
+          "correct_per_min": 11.375,
+          "incorrect_per_min": 2.875,
+          "wrong_reselect_previous_per_min": 0.0,
+          "wrong_other_cell_per_min": 2.875,
+          "time_to_target_s": 5.038265345765346
+        },
+        "KF-lag": {
+          "bps_mean": 1.4468906659739662,
+          "bps_ci95": [
+            1.2231446866996416,
+            1.6706366452482908
+          ],
+          "correct_per_min": 16.375,
+          "incorrect_per_min": 4.25,
+          "wrong_reselect_previous_per_min": 0.0,
+          "wrong_other_cell_per_min": 4.25,
+          "time_to_target_s": 3.5162620214752565
         },
         "Wiener": {
           "bps_mean": 0.5966559447315325,
@@ -240,23 +277,23 @@
             0.0,
             0.0
           ],
-          "correct_per_min": 6.0,
-          "incorrect_per_min": 20.875,
-          "wrong_reselect_previous_per_min": 0.125,
-          "wrong_other_cell_per_min": 20.75,
-          "time_to_target_s": 9.645248015873015
+          "correct_per_min": 5.25,
+          "incorrect_per_min": 17.375,
+          "wrong_reselect_previous_per_min": 0.25,
+          "wrong_other_cell_per_min": 17.125,
+          "time_to_target_s": 10.655139880952381
         },
         "GRU-64": {
-          "bps_mean": 0.0,
+          "bps_mean": 0.01491639861828831,
           "bps_ci95": [
             0.0,
-            0.0
+            0.044749195854864934
           ],
-          "correct_per_min": 5.125,
-          "incorrect_per_min": 14.875,
-          "wrong_reselect_previous_per_min": 0.125,
-          "wrong_other_cell_per_min": 14.75,
-          "time_to_target_s": 12.298208333333335
+          "correct_per_min": 0.25,
+          "incorrect_per_min": 1.625,
+          "wrong_reselect_previous_per_min": 0.0,
+          "wrong_other_cell_per_min": 1.625,
+          "time_to_target_s": 13.09
         }
       },
       "g4_d0.3": {
@@ -278,11 +315,11 @@
             0.0,
             0.0
           ],
-          "correct_per_min": 41.125,
-          "incorrect_per_min": 80.125,
-          "wrong_reselect_previous_per_min": 43.375,
+          "correct_per_min": 40.5,
+          "incorrect_per_min": 79.875,
+          "wrong_reselect_previous_per_min": 43.125,
           "wrong_other_cell_per_min": 36.75,
-          "time_to_target_s": 1.44363739527991
+          "time_to_target_s": 1.4711392015843234
         },
         "KF": {
           "bps_mean": 0.0,
@@ -290,11 +327,23 @@
             0.0,
             0.0
           ],
-          "correct_per_min": 40.25,
-          "incorrect_per_min": 84.625,
-          "wrong_reselect_previous_per_min": 47.875,
+          "correct_per_min": 41.5,
+          "incorrect_per_min": 80.875,
+          "wrong_reselect_previous_per_min": 44.125,
           "wrong_other_cell_per_min": 36.75,
-          "time_to_target_s": 1.465029756320915
+          "time_to_target_s": 1.4299826340738324
+        },
+        "KF-lag": {
+          "bps_mean": 0.0,
+          "bps_ci95": [
+            0.0,
+            0.0
+          ],
+          "correct_per_min": 54.125,
+          "incorrect_per_min": 75.375,
+          "wrong_reselect_previous_per_min": 62.75,
+          "wrong_other_cell_per_min": 12.625,
+          "time_to_target_s": 1.0978389238294897
         },
         "Wiener": {
           "bps_mean": 0.0,
@@ -314,11 +363,11 @@
             0.0,
             0.0
           ],
-          "correct_per_min": 18.125,
-          "incorrect_per_min": 137.75,
-          "wrong_reselect_previous_per_min": 22.0,
-          "wrong_other_cell_per_min": 115.75,
-          "time_to_target_s": 3.5438547979797983
+          "correct_per_min": 26.25,
+          "incorrect_per_min": 119.125,
+          "wrong_reselect_previous_per_min": 29.375,
+          "wrong_other_cell_per_min": 89.75,
+          "time_to_target_s": 2.3220938831023084
         },
         "GRU-64": {
           "bps_mean": 0.0,
@@ -326,11 +375,11 @@
             0.0,
             0.0
           ],
-          "correct_per_min": 25.5,
-          "incorrect_per_min": 118.125,
-          "wrong_reselect_previous_per_min": 28.25,
-          "wrong_other_cell_per_min": 89.875,
-          "time_to_target_s": 2.3340783197951995
+          "correct_per_min": 17.125,
+          "incorrect_per_min": 91.375,
+          "wrong_reselect_previous_per_min": 18.875,
+          "wrong_other_cell_per_min": 72.5,
+          "time_to_target_s": 3.600635962944864
         }
       },
       "g4_d0.5": {
@@ -347,28 +396,40 @@
           "time_to_target_s": 0.9382899305555557
         },
         "ReFIT-KF": {
-          "bps_mean": 0.09767226489021297,
+          "bps_mean": 0.07325419866765973,
           "bps_ci95": [
             0.0,
-            0.22790195141049696
+            0.21976259600297918
           ],
-          "correct_per_min": 34.0,
-          "incorrect_per_min": 34.25,
-          "wrong_reselect_previous_per_min": 20.25,
-          "wrong_other_cell_per_min": 14.0,
-          "time_to_target_s": 1.7414166229165042
+          "correct_per_min": 32.5,
+          "incorrect_per_min": 37.0,
+          "wrong_reselect_previous_per_min": 21.0,
+          "wrong_other_cell_per_min": 16.0,
+          "time_to_target_s": 1.8331615073145247
         },
         "KF": {
-          "bps_mean": 0.008139355407517748,
+          "bps_mean": 0.4558039028209938,
           "bps_ci95": [
-            0.0,
-            0.024418066222553242
+            0.3174348608931921,
+            0.5941729447487956
           ],
-          "correct_per_min": 35.0,
-          "incorrect_per_min": 36.25,
-          "wrong_reselect_previous_per_min": 21.75,
-          "wrong_other_cell_per_min": 14.5,
-          "time_to_target_s": 1.6835814659197013
+          "correct_per_min": 36.125,
+          "incorrect_per_min": 29.125,
+          "wrong_reselect_previous_per_min": 14.875,
+          "wrong_other_cell_per_min": 14.25,
+          "time_to_target_s": 1.6307738267900809
+        },
+        "KF-lag": {
+          "bps_mean": 1.8313549666914932,
+          "bps_ci95": [
+            1.676707213948656,
+            1.9860027194343304
+          ],
+          "correct_per_min": 46.75,
+          "incorrect_per_min": 18.625,
+          "wrong_reselect_previous_per_min": 15.5,
+          "wrong_other_cell_per_min": 3.125,
+          "time_to_target_s": 1.2735689433651967
         },
         "Wiener": {
           "bps_mean": 1.318575576017875,
@@ -388,11 +449,11 @@
             0.0,
             0.0
           ],
-          "correct_per_min": 18.25,
-          "incorrect_per_min": 67.375,
-          "wrong_reselect_previous_per_min": 8.25,
-          "wrong_other_cell_per_min": 59.125,
-          "time_to_target_s": 3.4418485528847373
+          "correct_per_min": 21.625,
+          "incorrect_per_min": 56.0,
+          "wrong_reselect_previous_per_min": 7.0,
+          "wrong_other_cell_per_min": 49.0,
+          "time_to_target_s": 2.6980491693978537
         },
         "GRU-64": {
           "bps_mean": 0.0,
@@ -400,11 +461,11 @@
             0.0,
             0.0
           ],
-          "correct_per_min": 22.625,
-          "incorrect_per_min": 49.875,
-          "wrong_reselect_previous_per_min": 5.375,
-          "wrong_other_cell_per_min": 44.5,
-          "time_to_target_s": 2.6205980519480523
+          "correct_per_min": 15.75,
+          "incorrect_per_min": 30.625,
+          "wrong_reselect_previous_per_min": 2.375,
+          "wrong_other_cell_per_min": 28.25,
+          "time_to_target_s": 3.6366726818932698
         }
       },
       "g4_d1.0": {
@@ -421,28 +482,40 @@
           "time_to_target_s": 1.4376611498257839
         },
         "ReFIT-KF": {
-          "bps_mean": 1.611592370688514,
+          "bps_mean": 1.5871743044659608,
           "bps_ci95": [
-            1.546477527428372,
-            1.676707213948656
+            1.513920105798301,
+            1.6604285031336206
           ],
           "correct_per_min": 25.25,
-          "incorrect_per_min": 0.5,
+          "incorrect_per_min": 0.875,
           "wrong_reselect_previous_per_min": 0.0,
-          "wrong_other_cell_per_min": 0.5,
-          "time_to_target_s": 2.3396088319088317
+          "wrong_other_cell_per_min": 0.875,
+          "time_to_target_s": 2.3377340254552212
         },
         "KF": {
-          "bps_mean": 1.6685678585411383,
+          "bps_mean": 1.7174039909862446,
           "bps_ci95": [
-            1.6115923706885138,
-            1.7336827018012801
+            1.6685678585411383,
+            1.7662401234313512
           ],
           "correct_per_min": 26.625,
-          "incorrect_per_min": 1.0,
-          "wrong_reselect_previous_per_min": 0.125,
-          "wrong_other_cell_per_min": 0.875,
-          "time_to_target_s": 2.192080280830281
+          "incorrect_per_min": 0.25,
+          "wrong_reselect_previous_per_min": 0.25,
+          "wrong_other_cell_per_min": 0.0,
+          "time_to_target_s": 2.1966890109890116
+        },
+        "KF-lag": {
+          "bps_mean": 2.13251111676965,
+          "bps_ci95": [
+            2.1080930505470965,
+            2.165068538399721
+          ],
+          "correct_per_min": 33.125,
+          "incorrect_per_min": 0.375,
+          "wrong_reselect_previous_per_min": 0.375,
+          "wrong_other_cell_per_min": 0.0,
+          "time_to_target_s": 1.7785431985294118
         },
         "Wiener": {
           "bps_mean": 1.6604285031336203,
@@ -457,28 +530,28 @@
           "time_to_target_s": 2.1173931097637997
         },
         "GRU-16": {
-          "bps_mean": 0.09767226489021297,
+          "bps_mean": 0.32557421630070993,
           "bps_ci95": [
-            0.0,
-            0.2767380838556034
+            0.13022968652028397,
+            0.5534761677112068
           ],
-          "correct_per_min": 15.25,
-          "incorrect_per_min": 22.125,
-          "wrong_reselect_previous_per_min": 0.375,
-          "wrong_other_cell_per_min": 21.75,
-          "time_to_target_s": 3.7160819735819737
+          "correct_per_min": 19.0,
+          "incorrect_per_min": 15.375,
+          "wrong_reselect_previous_per_min": 0.125,
+          "wrong_other_cell_per_min": 15.25,
+          "time_to_target_s": 3.1314122807017544
         },
         "GRU-64": {
           "bps_mean": 0.3988284149683696,
           "bps_ci95": [
-            0.17906581896539042,
-            0.6185910109713488
+            0.28487743926312115,
+            0.5290581014886535
           ],
-          "correct_per_min": 17.625,
-          "incorrect_per_min": 12.625,
-          "wrong_reselect_previous_per_min": 0.625,
-          "wrong_other_cell_per_min": 12.0,
-          "time_to_target_s": 3.385489486004192
+          "correct_per_min": 12.5,
+          "incorrect_per_min": 6.375,
+          "wrong_reselect_previous_per_min": 0.25,
+          "wrong_other_cell_per_min": 6.125,
+          "time_to_target_s": 4.642894230769231
         }
       },
       "g6_d0.3": {
@@ -500,11 +573,11 @@
             0.0,
             0.0
           ],
-          "correct_per_min": 30.875,
-          "incorrect_per_min": 85.75,
-          "wrong_reselect_previous_per_min": 31.625,
-          "wrong_other_cell_per_min": 54.125,
-          "time_to_target_s": 1.9158765120967742
+          "correct_per_min": 31.0,
+          "incorrect_per_min": 82.125,
+          "wrong_reselect_previous_per_min": 29.625,
+          "wrong_other_cell_per_min": 52.5,
+          "time_to_target_s": 1.914448239596425
         },
         "KF": {
           "bps_mean": 0.0,
@@ -512,11 +585,23 @@
             0.0,
             0.0
           ],
-          "correct_per_min": 32.75,
-          "incorrect_per_min": 84.125,
-          "wrong_reselect_previous_per_min": 35.5,
-          "wrong_other_cell_per_min": 48.625,
-          "time_to_target_s": 1.8089717829921939
+          "correct_per_min": 34.375,
+          "incorrect_per_min": 82.125,
+          "wrong_reselect_previous_per_min": 34.0,
+          "wrong_other_cell_per_min": 48.125,
+          "time_to_target_s": 1.720591025517496
+        },
+        "KF-lag": {
+          "bps_mean": 0.0,
+          "bps_ci95": [
+            0.0,
+            0.0
+          ],
+          "correct_per_min": 44.125,
+          "incorrect_per_min": 76.875,
+          "wrong_reselect_previous_per_min": 47.875,
+          "wrong_other_cell_per_min": 29.0,
+          "time_to_target_s": 1.3432760512276223
         },
         "Wiener": {
           "bps_mean": 0.0,
@@ -536,11 +621,11 @@
             0.0,
             0.0
           ],
-          "correct_per_min": 15.25,
-          "incorrect_per_min": 128.75,
-          "wrong_reselect_previous_per_min": 16.375,
-          "wrong_other_cell_per_min": 112.375,
-          "time_to_target_s": 3.830844395596234
+          "correct_per_min": 16.875,
+          "incorrect_per_min": 123.375,
+          "wrong_reselect_previous_per_min": 18.0,
+          "wrong_other_cell_per_min": 105.375,
+          "time_to_target_s": 3.42624080882353
         },
         "GRU-64": {
           "bps_mean": 0.0,
@@ -548,11 +633,11 @@
             0.0,
             0.0
           ],
-          "correct_per_min": 15.75,
-          "incorrect_per_min": 124.125,
-          "wrong_reselect_previous_per_min": 14.625,
-          "wrong_other_cell_per_min": 109.5,
-          "time_to_target_s": 3.805356321310269
+          "correct_per_min": 10.875,
+          "incorrect_per_min": 78.375,
+          "wrong_reselect_previous_per_min": 7.25,
+          "wrong_other_cell_per_min": 71.125,
+          "time_to_target_s": 4.907406302031302
         }
       },
       "g6_d0.5": {
@@ -575,22 +660,34 @@
             0.0
           ],
           "correct_per_min": 26.5,
-          "incorrect_per_min": 31.875,
-          "wrong_reselect_previous_per_min": 9.625,
-          "wrong_other_cell_per_min": 22.25,
-          "time_to_target_s": 2.2260828754578754
+          "incorrect_per_min": 30.375,
+          "wrong_reselect_previous_per_min": 10.0,
+          "wrong_other_cell_per_min": 20.375,
+          "time_to_target_s": 2.2327011243386243
         },
         "KF": {
-          "bps_mean": 0.10686006285302013,
+          "bps_mean": 0.20303411942073823,
           "bps_ci95": [
-            0.0,
-            0.2564641508472483
+            0.053430031426510066,
+            0.3633242137002684
           ],
-          "correct_per_min": 28.75,
-          "incorrect_per_min": 31.25,
-          "wrong_reselect_previous_per_min": 10.875,
-          "wrong_other_cell_per_min": 20.375,
-          "time_to_target_s": 2.059450557939156
+          "correct_per_min": 28.625,
+          "incorrect_per_min": 27.5,
+          "wrong_reselect_previous_per_min": 6.125,
+          "wrong_other_cell_per_min": 21.375,
+          "time_to_target_s": 2.052441303829652
+        },
+        "KF-lag": {
+          "bps_mean": 1.7738770433601343,
+          "bps_ci95": [
+            1.4212388359451678,
+            2.115829244489799
+          ],
+          "correct_per_min": 38.25,
+          "incorrect_per_min": 17.5,
+          "wrong_reselect_previous_per_min": 7.25,
+          "wrong_other_cell_per_min": 10.25,
+          "time_to_target_s": 1.549836389527179
         },
         "Wiener": {
           "bps_mean": 0.42744025141208053,
@@ -610,11 +707,11 @@
             0.0,
             0.0
           ],
-          "correct_per_min": 12.875,
-          "incorrect_per_min": 69.5,
-          "wrong_reselect_previous_per_min": 2.5,
-          "wrong_other_cell_per_min": 67.0,
-          "time_to_target_s": 4.562597527472527
+          "correct_per_min": 16.5,
+          "incorrect_per_min": 56.625,
+          "wrong_reselect_previous_per_min": 3.125,
+          "wrong_other_cell_per_min": 53.5,
+          "time_to_target_s": 3.696673402255639
         },
         "GRU-64": {
           "bps_mean": 0.0,
@@ -622,11 +719,11 @@
             0.0,
             0.0
           ],
-          "correct_per_min": 13.0,
-          "incorrect_per_min": 58.0,
-          "wrong_reselect_previous_per_min": 1.875,
-          "wrong_other_cell_per_min": 56.125,
-          "time_to_target_s": 4.574861721611722
+          "correct_per_min": 10.125,
+          "incorrect_per_min": 30.75,
+          "wrong_reselect_previous_per_min": 0.625,
+          "wrong_other_cell_per_min": 30.125,
+          "time_to_target_s": 5.658186938061938
         }
       },
       "g6_d1.0": {
@@ -643,28 +740,40 @@
           "time_to_target_s": 1.4589542682926828
         },
         "ReFIT-KF": {
-          "bps_mean": 1.570842923939396,
+          "bps_mean": 1.3357507856627515,
           "bps_ci95": [
-            1.4532968548010738,
-            1.677702986792416
+            1.2288907228097314,
+            1.4426108485157718
           ],
-          "correct_per_min": 21.0,
-          "incorrect_per_min": 2.625,
-          "wrong_reselect_previous_per_min": 0.0,
-          "wrong_other_cell_per_min": 2.625,
-          "time_to_target_s": 2.7872321428571425
+          "correct_per_min": 19.5,
+          "incorrect_per_min": 3.875,
+          "wrong_reselect_previous_per_min": 0.375,
+          "wrong_other_cell_per_min": 3.5,
+          "time_to_target_s": 2.969397765246449
         },
         "KF": {
-          "bps_mean": 1.549470911368792,
+          "bps_mean": 1.656330974221812,
           "bps_ci95": [
-            1.48535487365698,
-            1.634958961651208
+            1.549470911368792,
+            1.7738770433601343
           ],
-          "correct_per_min": 22.375,
-          "incorrect_per_min": 4.25,
-          "wrong_reselect_previous_per_min": 0.25,
-          "wrong_other_cell_per_min": 4.0,
-          "time_to_target_s": 2.6165520303971395
+          "correct_per_min": 22.125,
+          "incorrect_per_min": 2.75,
+          "wrong_reselect_previous_per_min": 0.125,
+          "wrong_other_cell_per_min": 2.625,
+          "time_to_target_s": 2.65788299924713
+        },
+        "KF-lag": {
+          "bps_mean": 2.3188633639105367,
+          "bps_ci95": [
+            2.2226893073428187,
+            2.404351414192953
+          ],
+          "correct_per_min": 28.5,
+          "incorrect_per_min": 1.375,
+          "wrong_reselect_previous_per_min": 0.375,
+          "wrong_other_cell_per_min": 1.0,
+          "time_to_target_s": 2.074956896551724
         },
         "Wiener": {
           "bps_mean": 1.4532968548010738,
@@ -684,23 +793,23 @@
             0.0,
             0.0
           ],
-          "correct_per_min": 11.625,
-          "incorrect_per_min": 22.25,
-          "wrong_reselect_previous_per_min": 0.875,
-          "wrong_other_cell_per_min": 21.375,
-          "time_to_target_s": 5.085813034188034
+          "correct_per_min": 11.75,
+          "incorrect_per_min": 19.125,
+          "wrong_reselect_previous_per_min": 0.125,
+          "wrong_other_cell_per_min": 19.0,
+          "time_to_target_s": 4.943390418609169
         },
         "GRU-64": {
-          "bps_mean": 0.0,
+          "bps_mean": 0.06411603771181207,
           "bps_ci95": [
-            0.0,
-            0.0
+            0.021372012570604025,
+            0.12823207542362414
           ],
-          "correct_per_min": 10.25,
-          "incorrect_per_min": 17.5,
-          "wrong_reselect_previous_per_min": 1.0,
-          "wrong_other_cell_per_min": 16.5,
-          "time_to_target_s": 5.448354797979798
+          "correct_per_min": 4.5,
+          "incorrect_per_min": 6.625,
+          "wrong_reselect_previous_per_min": 0.25,
+          "wrong_other_cell_per_min": 6.375,
+          "time_to_target_s": 13.098130952380952
         }
       },
       "g8_d0.3": {
@@ -722,11 +831,11 @@
             0.0,
             0.0
           ],
-          "correct_per_min": 25.875,
-          "incorrect_per_min": 80.875,
-          "wrong_reselect_previous_per_min": 22.375,
-          "wrong_other_cell_per_min": 58.5,
-          "time_to_target_s": 2.254144424094424
+          "correct_per_min": 26.375,
+          "incorrect_per_min": 78.625,
+          "wrong_reselect_previous_per_min": 20.0,
+          "wrong_other_cell_per_min": 58.625,
+          "time_to_target_s": 2.2090986263736263
         },
         "KF": {
           "bps_mean": 0.0,
@@ -734,11 +843,23 @@
             0.0,
             0.0
           ],
-          "correct_per_min": 27.375,
-          "incorrect_per_min": 87.375,
-          "wrong_reselect_previous_per_min": 28.375,
-          "wrong_other_cell_per_min": 59.0,
-          "time_to_target_s": 2.1603605432402846
+          "correct_per_min": 29.0,
+          "incorrect_per_min": 81.0,
+          "wrong_reselect_previous_per_min": 27.5,
+          "wrong_other_cell_per_min": 53.5,
+          "time_to_target_s": 2.024415995727175
+        },
+        "KF-lag": {
+          "bps_mean": 0.0,
+          "bps_ci95": [
+            0.0,
+            0.0
+          ],
+          "correct_per_min": 37.5,
+          "incorrect_per_min": 76.625,
+          "wrong_reselect_previous_per_min": 36.25,
+          "wrong_other_cell_per_min": 40.375,
+          "time_to_target_s": 1.5787026245255733
         },
         "Wiener": {
           "bps_mean": 0.0,
@@ -758,11 +879,11 @@
             0.0,
             0.0
           ],
-          "correct_per_min": 11.375,
-          "incorrect_per_min": 134.25,
-          "wrong_reselect_previous_per_min": 11.5,
-          "wrong_other_cell_per_min": 122.75,
-          "time_to_target_s": 5.05889559052059
+          "correct_per_min": 12.875,
+          "incorrect_per_min": 127.625,
+          "wrong_reselect_previous_per_min": 13.0,
+          "wrong_other_cell_per_min": 114.625,
+          "time_to_target_s": 4.590036401098901
         },
         "GRU-64": {
           "bps_mean": 0.0,
@@ -770,11 +891,11 @@
             0.0,
             0.0
           ],
-          "correct_per_min": 12.25,
-          "incorrect_per_min": 122.5,
-          "wrong_reselect_previous_per_min": 11.0,
-          "wrong_other_cell_per_min": 111.5,
-          "time_to_target_s": 4.585705492424243
+          "correct_per_min": 7.125,
+          "incorrect_per_min": 73.125,
+          "wrong_reselect_previous_per_min": 3.5,
+          "wrong_other_cell_per_min": 69.625,
+          "time_to_target_s": 7.381182900432901
         }
       },
       "g8_d0.5": {
@@ -791,28 +912,40 @@
           "time_to_target_s": 0.9723122686409307
         },
         "ReFIT-KF": {
-          "bps_mean": 0.024905333014582986,
+          "bps_mean": 0.012452666507291493,
           "bps_ci95": [
             0.0,
-            0.07471599904374895
+            0.03735799952187448
           ],
-          "correct_per_min": 22.375,
-          "incorrect_per_min": 29.375,
-          "wrong_reselect_previous_per_min": 4.125,
-          "wrong_other_cell_per_min": 25.25,
-          "time_to_target_s": 2.6571858436853004
+          "correct_per_min": 21.25,
+          "incorrect_per_min": 29.125,
+          "wrong_reselect_previous_per_min": 5.0,
+          "wrong_other_cell_per_min": 24.125,
+          "time_to_target_s": 2.743089006607428
         },
         "KF": {
-          "bps_mean": 0.062263332536457466,
+          "bps_mean": 0.28641132966770433,
           "bps_ci95": [
-            0.0,
-            0.1867899976093724
+            0.09962133205833194,
+            0.48565399378436824
           ],
-          "correct_per_min": 24.875,
-          "incorrect_per_min": 29.125,
-          "wrong_reselect_previous_per_min": 6.625,
-          "wrong_other_cell_per_min": 22.5,
-          "time_to_target_s": 2.3539670831784965
+          "correct_per_min": 25.375,
+          "incorrect_per_min": 23.375,
+          "wrong_reselect_previous_per_min": 3.875,
+          "wrong_other_cell_per_min": 19.5,
+          "time_to_target_s": 2.3180700297287253
+        },
+        "KF-lag": {
+          "bps_mean": 1.257719317236441,
+          "bps_ci95": [
+            0.734707323930198,
+            1.8554473095864323
+          ],
+          "correct_per_min": 32.5,
+          "incorrect_per_min": 19.875,
+          "wrong_reselect_previous_per_min": 3.625,
+          "wrong_other_cell_per_min": 16.25,
+          "time_to_target_s": 1.8139540725686658
         },
         "Wiener": {
           "bps_mean": 0.024905333014582986,
@@ -832,11 +965,11 @@
             0.0,
             0.0
           ],
-          "correct_per_min": 11.625,
-          "incorrect_per_min": 64.0,
-          "wrong_reselect_previous_per_min": 0.875,
-          "wrong_other_cell_per_min": 63.125,
-          "time_to_target_s": 5.015717532467533
+          "correct_per_min": 11.75,
+          "incorrect_per_min": 58.75,
+          "wrong_reselect_previous_per_min": 1.5,
+          "wrong_other_cell_per_min": 57.25,
+          "time_to_target_s": 5.192379582223332
         },
         "GRU-64": {
           "bps_mean": 0.0,
@@ -844,11 +977,11 @@
             0.0,
             0.0
           ],
-          "correct_per_min": 10.625,
-          "incorrect_per_min": 55.625,
-          "wrong_reselect_previous_per_min": 0.625,
-          "wrong_other_cell_per_min": 55.0,
-          "time_to_target_s": 5.286597915972916
+          "correct_per_min": 5.875,
+          "incorrect_per_min": 27.75,
+          "wrong_reselect_previous_per_min": 0.75,
+          "wrong_other_cell_per_min": 27.0,
+          "time_to_target_s": 9.377083333333333
         }
       },
       "g8_d1.0": {
@@ -865,28 +998,40 @@
           "time_to_target_s": 1.4735
         },
         "ReFIT-KF": {
-          "bps_mean": 1.2328139842218577,
+          "bps_mean": 1.1705506516854003,
           "bps_ci95": [
-            1.033571320105194,
-            1.4071513153239388
+            0.958855321061445,
+            1.3573406492947728
           ],
-          "correct_per_min": 16.75,
-          "incorrect_per_min": 4.375,
-          "wrong_reselect_previous_per_min": 0.125,
+          "correct_per_min": 16.25,
+          "incorrect_per_min": 4.5,
+          "wrong_reselect_previous_per_min": 0.25,
           "wrong_other_cell_per_min": 4.25,
-          "time_to_target_s": 3.5438149509803925
+          "time_to_target_s": 3.5932291666666667
         },
         "KF": {
-          "bps_mean": 1.5441306469041454,
+          "bps_mean": 1.7433733110208092,
           "bps_ci95": [
-            1.4320566483385218,
-            1.6562046454697688
+            1.5939413129333113,
+            1.9052579756155985
           ],
-          "correct_per_min": 19.625,
-          "incorrect_per_min": 4.125,
-          "wrong_reselect_previous_per_min": 0.25,
-          "wrong_other_cell_per_min": 3.875,
-          "time_to_target_s": 2.977057644110276
+          "correct_per_min": 18.5,
+          "incorrect_per_min": 1.0,
+          "wrong_reselect_previous_per_min": 0.0,
+          "wrong_other_cell_per_min": 1.0,
+          "time_to_target_s": 3.1746046488770947
+        },
+        "KF-lag": {
+          "bps_mean": 1.9799739746593474,
+          "bps_ci95": [
+            1.818089310064558,
+            2.1543113057614285
+          ],
+          "correct_per_min": 23.625,
+          "incorrect_per_min": 3.75,
+          "wrong_reselect_previous_per_min": 0.5,
+          "wrong_other_cell_per_min": 3.25,
+          "time_to_target_s": 2.5112605629877374
         },
         "Wiener": {
           "bps_mean": 1.0958346526416514,
@@ -907,22 +1052,22 @@
             0.0
           ],
           "correct_per_min": 9.375,
-          "incorrect_per_min": 22.0,
-          "wrong_reselect_previous_per_min": 0.25,
-          "wrong_other_cell_per_min": 21.75,
-          "time_to_target_s": 6.076400793650794
+          "incorrect_per_min": 19.375,
+          "wrong_reselect_previous_per_min": 0.375,
+          "wrong_other_cell_per_min": 19.0,
+          "time_to_target_s": 6.233228535353536
         },
         "GRU-64": {
-          "bps_mean": 0.0,
+          "bps_mean": 0.07471599904374895,
           "bps_ci95": [
             0.0,
-            0.0
+            0.1743373311020809
           ],
-          "correct_per_min": 9.375,
-          "incorrect_per_min": 16.625,
-          "wrong_reselect_previous_per_min": 0.125,
-          "wrong_other_cell_per_min": 16.5,
-          "time_to_target_s": 6.502565476190477
+          "correct_per_min": 2.375,
+          "incorrect_per_min": 3.375,
+          "wrong_reselect_previous_per_min": 0.0,
+          "wrong_other_cell_per_min": 3.375,
+          "time_to_target_s": 14.925833333333335
         }
       }
     }
@@ -930,8 +1075,9 @@
   "user_ablation_click": {
     "gains": {
       "Oracle": 1.0,
-      "ReFIT-KF": 0.5,
+      "ReFIT-KF": 0.7,
       "KF": 0.25,
+      "KF-lag": 0.35,
       "Wiener": 0.5,
       "GRU-16": 0.5,
       "GRU-64": 1.4
@@ -948,19 +1094,21 @@
           "incorrect_per_min": 0.25,
           "wrong_reselect_previous_per_min": 0.125,
           "wrong_other_cell_per_min": 0.125,
-          "time_to_target_s": 0.7724848685305923
+          "time_to_target_s": 0.7724848685305923,
+          "oracle_normalised_bps": 1.0
         },
         "ReFIT-KF": {
-          "bps_mean": 2.0137138134689216,
+          "bps_mean": 1.998797414850634,
           "bps_ci95": [
-            1.8645498272860388,
-            2.237459792743247
+            1.6109710507751376,
+            2.252376191361535
           ],
-          "correct_per_min": 21.0,
-          "incorrect_per_min": 4.125,
-          "wrong_reselect_previous_per_min": 0.0,
-          "wrong_other_cell_per_min": 4.125,
-          "time_to_target_s": 2.8005216450216452
+          "correct_per_min": 20.0,
+          "incorrect_per_min": 3.25,
+          "wrong_reselect_previous_per_min": 0.125,
+          "wrong_other_cell_per_min": 3.125,
+          "time_to_target_s": 2.9450856536394463,
+          "oracle_normalised_bps": 0.21788617886178865
         },
         "KF": {
           "bps_mean": 2.684951751291896,
@@ -972,7 +1120,21 @@
           "incorrect_per_min": 2.125,
           "wrong_reselect_previous_per_min": 0.25,
           "wrong_other_cell_per_min": 1.875,
-          "time_to_target_s": 2.3955044871794873
+          "time_to_target_s": 2.3955044871794873,
+          "oracle_normalised_bps": 0.29268292682926833
+        },
+        "KF-lag": {
+          "bps_mean": 2.7147845485284727,
+          "bps_ci95": [
+            2.2822089885981116,
+            3.013112520894239
+          ],
+          "correct_per_min": 31.75,
+          "incorrect_per_min": 9.0,
+          "wrong_reselect_previous_per_min": 0.625,
+          "wrong_other_cell_per_min": 8.375,
+          "time_to_target_s": 1.862304435483871,
+          "oracle_normalised_bps": 0.2959349593495935
         },
         "Wiener": {
           "bps_mean": 1.6706366452482908,
@@ -984,7 +1146,8 @@
           "incorrect_per_min": 7.25,
           "wrong_reselect_previous_per_min": 0.125,
           "wrong_other_cell_per_min": 7.125,
-          "time_to_target_s": 2.778146673501937
+          "time_to_target_s": 2.778146673501937,
+          "oracle_normalised_bps": 0.1821138211382114
         },
         "GRU-16": {
           "bps_mean": 0.8054855253875688,
@@ -996,7 +1159,8 @@
           "incorrect_per_min": 1.375,
           "wrong_reselect_previous_per_min": 0.0,
           "wrong_other_cell_per_min": 1.375,
-          "time_to_target_s": 6.89729705017205
+          "time_to_target_s": 6.89729705017205,
+          "oracle_normalised_bps": 0.0878048780487805
         },
         "GRU-64": {
           "bps_mean": 0.7905691267692805,
@@ -1008,7 +1172,8 @@
           "incorrect_per_min": 1.625,
           "wrong_reselect_previous_per_min": 0.0,
           "wrong_other_cell_per_min": 1.625,
-          "time_to_target_s": 6.992513798701299
+          "time_to_target_s": 6.992513798701299,
+          "oracle_normalised_bps": 0.08617886178861789
         }
       },
       "fixed_gain_forward_model": {
@@ -1022,19 +1187,21 @@
           "incorrect_per_min": 0.25,
           "wrong_reselect_previous_per_min": 0.125,
           "wrong_other_cell_per_min": 0.125,
-          "time_to_target_s": 0.7712442007068547
+          "time_to_target_s": 0.7712442007068547,
+          "oracle_normalised_bps": 1.0
         },
         "ReFIT-KF": {
-          "bps_mean": 0.432575559930361,
+          "bps_mean": 0.6264887419681091,
           "bps_ci95": [
-            0.19391318203774804,
-            0.671237937822974
+            0.4176591613120727,
+            0.8353183226241454
           ],
-          "correct_per_min": 5.0,
-          "incorrect_per_min": 1.375,
+          "correct_per_min": 7.0,
+          "incorrect_per_min": 1.75,
           "wrong_reselect_previous_per_min": 0.0,
-          "wrong_other_cell_per_min": 1.375,
-          "time_to_target_s": 8.762261904761903
+          "wrong_other_cell_per_min": 1.75,
+          "time_to_target_s": 8.630916666666668,
+          "oracle_normalised_bps": 0.06818181818181819
         },
         "KF": {
           "bps_mean": 1.1634790922264884,
@@ -1046,7 +1213,21 @@
           "incorrect_per_min": 2.375,
           "wrong_reselect_previous_per_min": 0.0,
           "wrong_other_cell_per_min": 2.375,
-          "time_to_target_s": 4.716582167832168
+          "time_to_target_s": 4.716582167832168,
+          "oracle_normalised_bps": 0.12662337662337664
+        },
+        "KF-lag": {
+          "bps_mean": 0.999398707425317,
+          "bps_ci95": [
+            0.7905691267692805,
+            1.2082282880813533
+          ],
+          "correct_per_min": 11.625,
+          "incorrect_per_min": 3.25,
+          "wrong_reselect_previous_per_min": 0.125,
+          "wrong_other_cell_per_min": 3.125,
+          "time_to_target_s": 4.908170163170164,
+          "oracle_normalised_bps": 0.10876623376623379
         },
         "Wiener": {
           "bps_mean": 0.3729099654572078,
@@ -1058,7 +1239,8 @@
           "incorrect_per_min": 4.125,
           "wrong_reselect_previous_per_min": 0.375,
           "wrong_other_cell_per_min": 3.75,
-          "time_to_target_s": 7.877488095238095
+          "time_to_target_s": 7.877488095238095,
+          "oracle_normalised_bps": 0.04058441558441559
         },
         "GRU-16": {
           "bps_mean": 0.238662377892613,
@@ -1070,7 +1252,8 @@
           "incorrect_per_min": 1.125,
           "wrong_reselect_previous_per_min": 0.0,
           "wrong_other_cell_per_min": 1.125,
-          "time_to_target_s": 17.06457142857143
+          "time_to_target_s": 17.06457142857143,
+          "oracle_normalised_bps": 0.02597402597402598
         },
         "GRU-64": {
           "bps_mean": 0.31324437098405455,
@@ -1082,7 +1265,8 @@
           "incorrect_per_min": 1.375,
           "wrong_reselect_previous_per_min": 0.0,
           "wrong_other_cell_per_min": 1.375,
-          "time_to_target_s": 13.12238095238095
+          "time_to_target_s": 13.12238095238095,
+          "oracle_normalised_bps": 0.034090909090909095
         }
       },
       "half_speed": {
@@ -1096,19 +1280,21 @@
           "incorrect_per_min": 0.625,
           "wrong_reselect_previous_per_min": 0.5,
           "wrong_other_cell_per_min": 0.125,
-          "time_to_target_s": 0.832440772404784
+          "time_to_target_s": 0.832440772404784,
+          "oracle_normalised_bps": 1.0
         },
         "ReFIT-KF": {
-          "bps_mean": 2.11812860379694,
+          "bps_mean": 1.998797414850634,
           "bps_ci95": [
-            2.0137138134689216,
-            2.2374597927432465
+            1.7601350369580206,
+            2.2076269955066703
           ],
-          "correct_per_min": 20.25,
-          "incorrect_per_min": 2.5,
+          "correct_per_min": 21.375,
+          "incorrect_per_min": 4.625,
           "wrong_reselect_previous_per_min": 0.0,
-          "wrong_other_cell_per_min": 2.5,
-          "time_to_target_s": 2.9320829156223893
+          "wrong_other_cell_per_min": 4.625,
+          "time_to_target_s": 2.732582792207792,
+          "oracle_normalised_bps": 0.23550087873462217
         },
         "KF": {
           "bps_mean": 2.11812860379694,
@@ -1120,7 +1306,21 @@
           "incorrect_per_min": 2.25,
           "wrong_reselect_previous_per_min": 0.125,
           "wrong_other_cell_per_min": 2.125,
-          "time_to_target_s": 2.9306453177380796
+          "time_to_target_s": 2.9306453177380796,
+          "oracle_normalised_bps": 0.2495606326889279
+        },
+        "KF-lag": {
+          "bps_mean": 2.0435466107054987,
+          "bps_ci95": [
+            1.775051435576309,
+            2.2822089885981116
+          ],
+          "correct_per_min": 22.0,
+          "incorrect_per_min": 4.875,
+          "wrong_reselect_previous_per_min": 0.25,
+          "wrong_other_cell_per_min": 4.625,
+          "time_to_target_s": 2.63947160267269,
+          "oracle_normalised_bps": 0.2407732864674868
         },
         "Wiener": {
           "bps_mean": 1.342475875645948,
@@ -1132,7 +1332,8 @@
           "incorrect_per_min": 5.75,
           "wrong_reselect_previous_per_min": 0.375,
           "wrong_other_cell_per_min": 5.375,
-          "time_to_target_s": 3.4500296160130715
+          "time_to_target_s": 3.4500296160130715,
+          "oracle_normalised_bps": 0.15817223198594024
         },
         "GRU-16": {
           "bps_mean": 0.5519067488766676,
@@ -1144,7 +1345,8 @@
           "incorrect_per_min": 2.0,
           "wrong_reselect_previous_per_min": 0.125,
           "wrong_other_cell_per_min": 1.875,
-          "time_to_target_s": 8.576698412698413
+          "time_to_target_s": 8.576698412698413,
+          "oracle_normalised_bps": 0.06502636203866433
         },
         "GRU-64": {
           "bps_mean": 0.5071575530218027,
@@ -1156,7 +1358,101 @@
           "incorrect_per_min": 2.125,
           "wrong_reselect_previous_per_min": 0.0,
           "wrong_other_cell_per_min": 2.125,
-          "time_to_target_s": 8.193042658730159
+          "time_to_target_s": 8.193042658730159,
+          "oracle_normalised_bps": 0.059753954305799654
+        }
+      },
+      "human_speed": {
+        "Oracle": {
+          "bps_mean": 6.861543364412622,
+          "bps_ci95": [
+            6.7720449727028935,
+            6.936125357504064
+          ],
+          "correct_per_min": 58.0,
+          "incorrect_per_min": 0.5,
+          "wrong_reselect_previous_per_min": 0.375,
+          "wrong_other_cell_per_min": 0.125,
+          "time_to_target_s": 1.022937265815767,
+          "oracle_normalised_bps": 1.0
+        },
+        "ReFIT-KF": {
+          "bps_mean": 1.7153858411031557,
+          "bps_ci95": [
+            1.4916398618288311,
+            1.9540482189957686
+          ],
+          "correct_per_min": 17.125,
+          "incorrect_per_min": 2.75,
+          "wrong_reselect_previous_per_min": 0.25,
+          "wrong_other_cell_per_min": 2.5,
+          "time_to_target_s": 3.4244593653250774,
+          "oracle_normalised_bps": 0.25000000000000006
+        },
+        "KF": {
+          "bps_mean": 1.4618070645922545,
+          "bps_ci95": [
+            1.4021414701191013,
+            1.536389057683696
+          ],
+          "correct_per_min": 14.0,
+          "incorrect_per_min": 1.75,
+          "wrong_reselect_previous_per_min": 0.125,
+          "wrong_other_cell_per_min": 1.625,
+          "time_to_target_s": 4.166538461538462,
+          "oracle_normalised_bps": 0.2130434782608696
+        },
+        "KF-lag": {
+          "bps_mean": 1.536389057683696,
+          "bps_ci95": [
+            1.4170578687373896,
+            1.7004694424848674
+          ],
+          "correct_per_min": 15.25,
+          "incorrect_per_min": 2.375,
+          "wrong_reselect_previous_per_min": 0.0,
+          "wrong_other_cell_per_min": 2.375,
+          "time_to_target_s": 3.8882640056022413,
+          "oracle_normalised_bps": 0.2239130434782609
+        },
+        "Wiener": {
+          "bps_mean": 1.05906430189847,
+          "bps_ci95": [
+            0.8800675184790103,
+            1.2977266797910831
+          ],
+          "correct_per_min": 12.75,
+          "incorrect_per_min": 3.875,
+          "wrong_reselect_previous_per_min": 0.0,
+          "wrong_other_cell_per_min": 3.875,
+          "time_to_target_s": 4.620754273504273,
+          "oracle_normalised_bps": 0.15434782608695655
+        },
+        "GRU-16": {
+          "bps_mean": 0.4922411544035143,
+          "bps_ci95": [
+            0.3132443709840545,
+            0.6563215392046857
+          ],
+          "correct_per_min": 5.625,
+          "incorrect_per_min": 1.625,
+          "wrong_reselect_previous_per_min": 0.0,
+          "wrong_other_cell_per_min": 1.625,
+          "time_to_target_s": 9.921800595238096,
+          "oracle_normalised_bps": 0.07173913043478262
+        },
+        "GRU-64": {
+          "bps_mean": 0.5071575530218027,
+          "bps_ci95": [
+            0.432575559930361,
+            0.5817395461132442
+          ],
+          "correct_per_min": 5.5,
+          "incorrect_per_min": 1.25,
+          "wrong_reselect_previous_per_min": 0.125,
+          "wrong_other_cell_per_min": 1.125,
+          "time_to_target_s": 10.02760119047619,
+          "oracle_normalised_bps": 0.07391304347826089
         }
       },
       "no_forward_model": {
@@ -1170,19 +1466,21 @@
           "incorrect_per_min": 0.625,
           "wrong_reselect_previous_per_min": 0.0,
           "wrong_other_cell_per_min": 0.625,
-          "time_to_target_s": null
+          "time_to_target_s": null,
+          "oracle_normalised_bps": 0.0
         },
         "ReFIT-KF": {
-          "bps_mean": 1.5214726590654077,
+          "bps_mean": 0.25357877651090127,
           "bps_ci95": [
-            1.2231446866996416,
-            1.7899678341945973
+            0.10441479032801818,
+            0.4474919585486493
           ],
-          "correct_per_min": 16.375,
-          "incorrect_per_min": 3.625,
-          "wrong_reselect_previous_per_min": 0.25,
-          "wrong_other_cell_per_min": 3.375,
-          "time_to_target_s": 3.628544062479918
+          "correct_per_min": 3.125,
+          "incorrect_per_min": 1.0,
+          "wrong_reselect_previous_per_min": 0.0,
+          "wrong_other_cell_per_min": 1.0,
+          "time_to_target_s": 3.8752083333333336,
+          "oracle_normalised_bps": 253578776.51090124
         },
         "KF": {
           "bps_mean": 2.401540177544418,
@@ -1194,7 +1492,21 @@
           "incorrect_per_min": 3.375,
           "wrong_reselect_previous_per_min": 0.125,
           "wrong_other_cell_per_min": 3.25,
-          "time_to_target_s": 2.52668413116674
+          "time_to_target_s": 2.52668413116674,
+          "oracle_normalised_bps": 2401540177.544418
+        },
+        "KF-lag": {
+          "bps_mean": 4.3854211937767635,
+          "bps_ci95": [
+            4.131842417265862,
+            4.6091671730510875
+          ],
+          "correct_per_min": 39.5,
+          "incorrect_per_min": 2.75,
+          "wrong_reselect_previous_per_min": 0.625,
+          "wrong_other_cell_per_min": 2.125,
+          "time_to_target_s": 1.5035761707270052,
+          "oracle_normalised_bps": 4385421193.776763
         },
         "Wiener": {
           "bps_mean": 2.4761221706358594,
@@ -1206,7 +1518,8 @@
           "incorrect_per_min": 9.5,
           "wrong_reselect_previous_per_min": 0.0,
           "wrong_other_cell_per_min": 9.5,
-          "time_to_target_s": 1.9579712462571235
+          "time_to_target_s": 1.9579712462571235,
+          "oracle_normalised_bps": 2476122170.635859
         },
         "GRU-16": {
           "bps_mean": 1.0739807005167585,
@@ -1218,7 +1531,8 @@
           "incorrect_per_min": 1.875,
           "wrong_reselect_previous_per_min": 0.0,
           "wrong_other_cell_per_min": 1.875,
-          "time_to_target_s": 5.181738095238095
+          "time_to_target_s": 5.181738095238095,
+          "oracle_normalised_bps": 1073980700.5167584
         },
         "GRU-64": {
           "bps_mean": 0.7458199309144156,
@@ -1230,25 +1544,30 @@
           "incorrect_per_min": 2.75,
           "wrong_reselect_previous_per_min": 0.125,
           "wrong_other_cell_per_min": 2.625,
-          "time_to_target_s": 7.030670634920636
+          "time_to_target_s": 7.030670634920636,
+          "oracle_normalised_bps": 745819930.9144155
         }
       }
     }
   },
   "gain_curves_click": {
     "ReFIT-KF": {
-      "0.18": 1.2927545469183201,
-      "0.25": 1.670636645248291,
-      "0.35": 2.008741680596159,
-      "0.5": 2.1877384640156188,
-      "0.7": 1.789967834194597,
-      "1.0": 1.272866015427269,
-      "1.4": 0.49721328727627706,
+      "0.09": 0.6563215392046856,
+      "0.13": 0.9148724485883498,
+      "0.18": 1.4120857358646266,
+      "0.25": 1.511528393319882,
+      "0.35": 1.8496334286677503,
+      "0.5": 1.770079302703546,
+      "0.7": 1.949076086123006,
+      "1.0": 1.3126430784093712,
+      "1.4": 0.5369903502583793,
       "2.0": 0.03977706298210216,
-      "2.8": 0.01988853149105108,
+      "2.8": 0.0,
       "4.0": 0.0
     },
     "KF": {
+      "0.09": 1.3921972043735755,
+      "0.13": 1.9291875546319546,
       "0.18": 2.3667352474350785,
       "0.25": 2.4462893733992828,
       "0.35": 2.247404058488772,
@@ -1260,7 +1579,23 @@
       "2.8": 0.0,
       "4.0": 0.0
     },
+    "KF-lag": {
+      "0.09": 0.974538043061503,
+      "0.13": 1.5513054563019841,
+      "0.18": 2.0684072750693123,
+      "0.25": 2.605397625327692,
+      "0.35": 3.2816076960234284,
+      "0.5": 2.744617345765049,
+      "0.7": 2.3269581844529763,
+      "1.0": 1.3126430784093712,
+      "1.4": 0.3778820983299705,
+      "2.0": 0.05966559447315325,
+      "2.8": 0.0,
+      "4.0": 0.0
+    },
     "Wiener": {
+      "0.09": 0.4375476928031237,
+      "0.13": 0.5369903502583792,
       "0.18": 0.8750953856062477,
       "0.25": 1.3325316099004223,
       "0.35": 1.4717513303377798,
@@ -1273,6 +1608,8 @@
       "4.0": 0.0
     },
     "GRU-16": {
+      "0.09": 0.1193311889463065,
+      "0.13": 0.1789967834194597,
       "0.18": 0.2983279723657662,
       "0.25": 0.49721328727627706,
       "0.35": 0.7159871336778391,
@@ -1285,6 +1622,8 @@
       "4.0": 0.07955412596420432
     },
     "GRU-64": {
+      "0.09": 0.05966559447315325,
+      "0.13": 0.03977706298210216,
       "0.18": 0.05966559447315325,
       "0.25": 0.07955412596420432,
       "0.35": 0.19888531491051084,
@@ -1299,12 +1638,16 @@
   },
   "hold_still_wander": {
     "ReFIT-KF": {
-      "median_mm_over_0p5s": 22.97805592527474,
-      "p90_mm_over_0p5s": 34.95304382744686
+      "median_mm_over_0p5s": 24.665517206609515,
+      "p90_mm_over_0p5s": 36.65813595311497
     },
     "KF": {
-      "median_mm_over_0p5s": 21.991151096002294,
-      "p90_mm_over_0p5s": 37.893224046977735
+      "median_mm_over_0p5s": 21.9911510990268,
+      "p90_mm_over_0p5s": 37.89322405230207
+    },
+    "KF-lag": {
+      "median_mm_over_0p5s": 18.725893477121403,
+      "p90_mm_over_0p5s": 38.78182381181222
     },
     "Wiener": {
       "median_mm_over_0p5s": 17.521783306737454,
@@ -1322,25 +1665,37 @@
   "open_loop_distribution_shift": {
     "ReFIT-KF": {
       "mc_maze_reaches": {
-        "r2": 0.17921021315475055,
-        "speed_ratio_when_moving": 0.23869833285343434,
+        "r2": 0.1705502932607647,
+        "speed_ratio_when_moving": 0.23129589731815814,
         "frac_bins_near_rest": 0.6351648351648351
       },
       "webgrid_commands": {
-        "r2": 0.2967312645223608,
-        "speed_ratio_when_moving": 0.26209899860173336,
+        "r2": 0.2864003877809126,
+        "speed_ratio_when_moving": 0.25364616275274654,
         "frac_bins_near_rest": 0.35
       }
     },
     "KF": {
       "mc_maze_reaches": {
-        "r2": 0.2829981240450223,
-        "speed_ratio_when_moving": 0.5321221874435837,
+        "r2": 0.2829981240724719,
+        "speed_ratio_when_moving": 0.5321221875799327,
         "frac_bins_near_rest": 0.6351648351648351
       },
       "webgrid_commands": {
-        "r2": 0.30158130350629386,
-        "speed_ratio_when_moving": 0.5467288080448447,
+        "r2": 0.30158130348631224,
+        "speed_ratio_when_moving": 0.5467288082002992,
+        "frac_bins_near_rest": 0.35
+      }
+    },
+    "KF-lag": {
+      "mc_maze_reaches": {
+        "r2": 0.6059797610835074,
+        "speed_ratio_when_moving": 0.6139139448767039,
+        "frac_bins_near_rest": 0.6351648351648351
+      },
+      "webgrid_commands": {
+        "r2": 0.6293581284622012,
+        "speed_ratio_when_moving": 0.6424655842857422,
         "frac_bins_near_rest": 0.35
       }
     },

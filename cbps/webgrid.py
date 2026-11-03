@@ -251,3 +251,27 @@ def run_session(decoder: Decoder, enc: EncodingModel, cfg: TaskConfig, user: Use
     if record:
         log = {k: (np.array(v) if k != "events" else v) for k, v in log.items()}
     return res, log
+
+
+def fit_reach_policy(start: np.ndarray, goal: np.ndarray, mean_speed: np.ndarray,
+                     vmaxs=(200, 300, 400, 600, 800, 1000, 1200, 1500, 2000),
+                     taus=(0.04, 0.06, 0.08, 0.1, 0.13, 0.16, 0.2), tau_ms=(0.02, 0.04, 0.06, 0.08, 0.1, 0.12)):
+    """Grid-search (vmax, tau, tau_m) of the user's reach policy, open loop with perfect feedback, so the
+    mean simulated speed profile from `start` to `goal` [n, 2] matches `mean_speed` [T] (real reaches,
+    aligned at movement onset). Returns (vmax, tau, tau_m, rmse, simulated profile)."""
+    import itertools
+
+    def sim(vmax, tau, tm):
+        p, c, out = start.copy(), np.zeros_like(start), []
+        for _ in range(len(mean_speed)):
+            e = goal - p
+            d = np.linalg.norm(e, axis=1, keepdims=True)
+            c = c + (vmax * np.tanh(d / (vmax * tau)) * e / np.maximum(d, 1e-9) - c) * BIN_S / tm
+            p = p + c * BIN_S
+            out.append(np.linalg.norm(c, axis=1))
+        return np.stack(out, 1).mean(0)
+
+    loss, vmax, tau, tm = min((np.mean((sim(*q) - mean_speed) ** 2), *q)
+                              for q in itertools.product(vmaxs, taus, tau_ms))
+    return vmax, tau, tm, float(np.sqrt(loss)), sim(vmax, tau, tm)
+

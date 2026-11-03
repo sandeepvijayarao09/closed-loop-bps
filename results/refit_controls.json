@@ -1,0 +1,387 @@
+{
+  "eval_seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+  ],
+  "eval_seconds": 120.0,
+  "users": {
+    "adaptive": {
+      "kf_gain_during_calibration": 0.25,
+      "decoders": {
+        "KF": {
+          "gain": 0.25,
+          "bps_mean": 2.434356254504652,
+          "bps_ci95": [
+            2.332924743900292,
+            2.532804485385355
+          ],
+          "n_sessions": 20,
+          "correct_per_min": 24.275,
+          "incorrect_per_min": 3.875,
+          "time_to_target_s": 2.450459185093232,
+          "paired_diff_vs_KF": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          },
+          "real_test_r2": 0.2164870756815649,
+          "open_loop_webgrid": {
+            "r2_vs_intent": 0.30158130348631224,
+            "speed_ratio_when_moving": 0.5467288082002992,
+            "speed_rms_when_intent_still_mm_s": 127.2729931955982
+          }
+        },
+        "GRU-64": {
+          "gain": 1.4,
+          "bps_mean": 0.6831710567176048,
+          "bps_ci95": [
+            0.5638398677712982,
+            0.8054855253875688
+          ],
+          "n_sessions": 20,
+          "correct_per_min": 8.775,
+          "incorrect_per_min": 3.05,
+          "time_to_target_s": 6.680194311618036,
+          "paired_diff_vs_KF": {
+            "mean": -1.7511851977870478,
+            "ci95": [
+              -1.9212321420355345,
+              -1.5750971120981552
+            ]
+          },
+          "real_test_r2": 0.8529460371423225,
+          "open_loop_webgrid": {
+            "r2_vs_intent": 0.43920045479992786,
+            "speed_ratio_when_moving": 0.22086548547489135,
+            "speed_rms_when_intent_still_mm_s": 29.521949059480757
+          }
+        },
+        "ReFIT-KF": {
+          "gain": 0.7,
+          "bps_mean": 1.879466225904327,
+          "bps_ci95": [
+            1.7541684775107051,
+            1.9958141351269763
+          ],
+          "n_sessions": 20,
+          "correct_per_min": 20.5,
+          "incorrect_per_min": 4.75,
+          "time_to_target_s": 2.8882089164876374,
+          "paired_diff_vs_KF": {
+            "mean": -0.5548900286003251,
+            "ci95": [
+              -0.7100205742305234,
+              -0.40572604241744215
+            ]
+          },
+          "real_test_r2": 0.14560892482137028,
+          "open_loop_webgrid": {
+            "r2_vs_intent": 0.2864003877809126,
+            "speed_ratio_when_moving": 0.25364616275274654,
+            "speed_rms_when_intent_still_mm_s": 86.51241190215532
+          }
+        },
+        "ReFIT-KF-unmasked": {
+          "gain": 0.5,
+          "bps_mean": 2.019680372916237,
+          "bps_ci95": [
+            1.9301819812065073,
+            2.1151453240732825
+          ],
+          "n_sessions": 20,
+          "correct_per_min": 21.6,
+          "incorrect_per_min": 4.675,
+          "time_to_target_s": 2.7440477294724244,
+          "paired_diff_vs_KF": {
+            "mean": -0.41467588158841495,
+            "ci95": [
+              -0.5250572313637485,
+              -0.3072778115367393
+            ]
+          },
+          "real_test_r2": 0.15328133105703984,
+          "open_loop_webgrid": {
+            "r2_vs_intent": 0.2967312645463218,
+            "speed_ratio_when_moving": 0.26209899869109,
+            "speed_rms_when_intent_still_mm_s": 86.02195869834597
+          }
+        },
+        "ReFIT-KF-oracle": {
+          "gain": 0.35,
+          "bps_mean": 2.7446173457650493,
+          "bps_ci95": [
+            2.670035352673608,
+            2.8191993388564907
+          ],
+          "n_sessions": 20,
+          "correct_per_min": 26.2,
+          "incorrect_per_min": 3.2,
+          "time_to_target_s": 2.269625233830697,
+          "paired_diff_vs_KF": {
+            "mean": 0.31026109126039697,
+            "ci95": [
+              0.22672925899798227,
+              0.3967762032464692
+            ]
+          },
+          "real_test_r2": 0.19752540963322446,
+          "open_loop_webgrid": {
+            "r2_vs_intent": 0.38189117928224564,
+            "speed_ratio_when_moving": 0.322184375063425,
+            "speed_rms_when_intent_still_mm_s": 77.11493894531586
+          }
+        },
+        "ReFIT-GRU-64": {
+          "gain": 0.7,
+          "bps_mean": 1.3156263581330292,
+          "bps_ci95": [
+            1.1873453300157497,
+            1.4439073862503087
+          ],
+          "n_sessions": 20,
+          "correct_per_min": 16.775,
+          "incorrect_per_min": 5.75,
+          "time_to_target_s": 3.5398551561010976,
+          "paired_diff_vs_KF": {
+            "mean": -1.1187298963716232,
+            "ci95": [
+              -1.2649106028308486,
+              -0.9725491899123977
+            ]
+          },
+          "real_test_r2": 0.22177662320254193,
+          "open_loop_webgrid": {
+            "r2_vs_intent": 0.3106173457748844,
+            "speed_ratio_when_moving": 0.3778488871932112,
+            "speed_rms_when_intent_still_mm_s": 100.37603933297405
+          }
+        },
+        "ReFIT-GRU-64-oracle": {
+          "gain": 0.25,
+          "bps_mean": 1.8287504706021473,
+          "bps_ci95": [
+            1.7482019180633899,
+            1.9122823028645617
+          ],
+          "n_sessions": 20,
+          "correct_per_min": 18.525,
+          "incorrect_per_min": 3.2,
+          "time_to_target_s": 3.2036325665666725,
+          "paired_diff_vs_KF": {
+            "mean": -0.6056057839025054,
+            "ci95": [
+              -0.6951041756122353,
+              -0.5071575530218025
+            ]
+          },
+          "real_test_r2": 0.0017713376667454206,
+          "open_loop_webgrid": {
+            "r2_vs_intent": 0.5202415174198188,
+            "speed_ratio_when_moving": 0.9362847393741172,
+            "speed_rms_when_intent_still_mm_s": 146.35362523298969
+          }
+        }
+      }
+    },
+    "fixed_gain": {
+      "kf_gain_during_calibration": 0.35,
+      "decoders": {
+        "KF": {
+          "gain": 0.35,
+          "bps_mean": 1.634837288564399,
+          "bps_ci95": [
+            1.545338896854669,
+            1.7213524005504712
+          ],
+          "n_sessions": 20,
+          "correct_per_min": 17.025,
+          "incorrect_per_min": 3.325,
+          "time_to_target_s": 3.4553134700166446,
+          "paired_diff_vs_KF": {
+            "mean": 0.0,
+            "ci95": [
+              0.0,
+              0.0
+            ]
+          },
+          "real_test_r2": 0.2164870756815649,
+          "open_loop_webgrid": {
+            "r2_vs_intent": 0.29423576444738286,
+            "speed_ratio_when_moving": 0.5481429457948241,
+            "speed_rms_when_intent_still_mm_s": 126.56941555163496
+          }
+        },
+        "GRU-64": {
+          "gain": 2.8,
+          "bps_mean": 0.20882958065603638,
+          "bps_ci95": [
+            0.1342475875645948,
+            0.2923614129184509
+          ],
+          "n_sessions": 20,
+          "correct_per_min": 4.525,
+          "incorrect_per_min": 2.925,
+          "time_to_target_s": 13.018560286935289,
+          "paired_diff_vs_KF": {
+            "mean": -1.4260077079083626,
+            "ci95": [
+              -1.5632385751966151,
+              -1.2798270014491369
+            ]
+          },
+          "real_test_r2": 0.8529460371423225,
+          "open_loop_webgrid": {
+            "r2_vs_intent": 0.4557485965461059,
+            "speed_ratio_when_moving": 0.23366842244051553,
+            "speed_rms_when_intent_still_mm_s": 27.26826157524768
+          }
+        },
+        "ReFIT-KF": {
+          "gain": 0.7,
+          "bps_mean": 2.4850720098068324,
+          "bps_ci95": [
+            2.332924743900292,
+            2.6402025554370305
+          ],
+          "n_sessions": 20,
+          "correct_per_min": 27.025,
+          "incorrect_per_min": 6.2,
+          "time_to_target_s": 2.208566722512736,
+          "paired_diff_vs_KF": {
+            "mean": 0.8502347212424336,
+            "ci95": [
+              0.6563215392046858,
+              1.0471311830038392
+            ]
+          },
+          "real_test_r2": 0.21608446337242015,
+          "open_loop_webgrid": {
+            "r2_vs_intent": 0.40825846670011556,
+            "speed_ratio_when_moving": 0.43376220284190325,
+            "speed_rms_when_intent_still_mm_s": 92.47875940341738
+          }
+        },
+        "ReFIT-KF-unmasked": {
+          "gain": 0.7,
+          "bps_mean": 2.464189051741229,
+          "bps_ci95": [
+            2.332924743900292,
+            2.595453359582166
+          ],
+          "n_sessions": 20,
+          "correct_per_min": 27.0,
+          "incorrect_per_min": 6.35,
+          "time_to_target_s": 2.203718286632464,
+          "paired_diff_vs_KF": {
+            "mean": 0.8293517631768299,
+            "ci95": [
+              0.6533382594810281,
+              1.0023819871489745
+            ]
+          },
+          "real_test_r2": 0.2219444119745801,
+          "open_loop_webgrid": {
+            "r2_vs_intent": 0.4102606298505039,
+            "speed_ratio_when_moving": 0.43729995106124947,
+            "speed_rms_when_intent_still_mm_s": 92.30725342429513
+          }
+        },
+        "ReFIT-KF-oracle": {
+          "gain": 0.7,
+          "bps_mean": 2.5238546462143825,
+          "bps_ci95": [
+            2.3925157563803534,
+            2.649152394608004
+          ],
+          "n_sessions": 20,
+          "correct_per_min": 27.125,
+          "incorrect_per_min": 5.975,
+          "time_to_target_s": 2.1990501572741055,
+          "paired_diff_vs_KF": {
+            "mean": 0.8890173576499834,
+            "ci95": [
+              0.7130038539541814,
+              1.0650308613457855
+            ]
+          },
+          "real_test_r2": 0.23215457868163092,
+          "open_loop_webgrid": {
+            "r2_vs_intent": 0.43647038948189415,
+            "speed_ratio_when_moving": 0.4538546310946301,
+            "speed_rms_when_intent_still_mm_s": 91.54399458766038
+          }
+        },
+        "ReFIT-GRU-64": {
+          "gain": 0.7,
+          "bps_mean": 1.3215929175803445,
+          "bps_ci95": [
+            1.2350778055942722,
+            1.4051247498427588
+          ],
+          "n_sessions": 20,
+          "correct_per_min": 14.5,
+          "incorrect_per_min": 3.425,
+          "time_to_target_s": 4.066569562973883,
+          "paired_diff_vs_KF": {
+            "mean": -0.3132443709840545,
+            "ci95": [
+              -0.41169260186475737,
+              -0.21479614010335163
+            ]
+          },
+          "real_test_r2": 0.15972755590454335,
+          "open_loop_webgrid": {
+            "r2_vs_intent": 0.25038380648129704,
+            "speed_ratio_when_moving": 0.3211560269602615,
+            "speed_rms_when_intent_still_mm_s": 105.37536168816935
+          }
+        },
+        "ReFIT-GRU-64-oracle": {
+          "gain": 0.5,
+          "bps_mean": 1.8078675125365433,
+          "bps_ci95": [
+            1.6825697641429216,
+            1.9331652609301648
+          ],
+          "n_sessions": 20,
+          "correct_per_min": 19.375,
+          "incorrect_per_min": 4.225,
+          "time_to_target_s": 3.07792373762572,
+          "paired_diff_vs_KF": {
+            "mean": 0.1730302239721444,
+            "ci95": [
+              0.02386623778926129,
+              0.33114404932600044
+            ]
+          },
+          "real_test_r2": 0.010146140755171895,
+          "open_loop_webgrid": {
+            "r2_vs_intent": 0.46602266824481803,
+            "speed_ratio_when_moving": 0.6992473672597634,
+            "speed_rms_when_intent_still_mm_s": 121.85113530895394
+          }
+        }
+      }
+    }
+  }
+}

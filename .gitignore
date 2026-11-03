@@ -6,3 +6,4 @@ __pycache__/
 rt/build/
 artifacts/
 .DS_Store
+dist/

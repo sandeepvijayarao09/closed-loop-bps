@@ -36,7 +36,7 @@ from cbps.metrics import bootstrap_ci, r2  # noqa: E402
 from cbps.webgrid import Oracle, TaskConfig, UserModel, run_session  # noqa: E402
 
 SEEDS = list(range(300, 308))
-DECS = ["Oracle", "ReFIT-KF", "KF", "Wiener", "GRU-16", "GRU-64"]
+DECS = ["Oracle", "ReFIT-KF", "KF", "KF-lag", "Wiener", "GRU-16", "GRU-64"]
 _G = {}
 
 
@@ -174,13 +174,16 @@ def main():
     cl = load_json("closed_loop.json")
     user = UserModel(vmax=um["vmax"], tau=um["tau"], tau_m=um["tau_m"])
     gains = {n: (1.0 if n == "Oracle" else cl["modes"]["click"]["decoders"][n]["gain"]) for n in DECS}
-    dgains = gains  # click-tuned gains: tuning on an infeasible dwell setting would just pick noise
+    # Dwell sweep uses the gains tuned for the main dwell condition (6x6, 1 s), the same ones as the main table.
+    dgains = {n: (1.0 if n == "Oracle" else cl["modes"]["dwell"]["decoders"][n]["gain"]) for n in DECS}
     out = {"seeds": SEEDS, "session_seconds": 60.0}
 
     grids, dwells = [4, 6, 8, 12], [0.3, 0.5, 1.0]
     users = {"default (adaptive forward model)": user, "fixed_gain_forward_model": replace(user, forward_gain="fixed"),
              "no_forward_model": replace(user, forward_model=False),
-             "half_speed": replace(user, vmax=user.vmax / 2)}
+             "half_speed": replace(user, vmax=user.vmax / 2),
+             # Closer to a person using a BCI cursor: much slower, slower to react.
+             "human_speed": replace(user, vmax=350.0, react_delay=15)}
     jobs = []
     for g in grids:
         for dw in dwells:
@@ -198,7 +201,11 @@ def main():
     res = {k: {n: agg([r[3] for r in rows if r[0] == k and r[1] == n]) for n in DECS} for k in keys}
     out["dwell_sweep"] = {"grids": grids, "cell_mm": [240 / g for g in grids], "dwell_s": dwells, "gains": dgains,
                           "results": {k: v for k, v in res.items() if k.startswith("g")}}
-    out["user_ablation_click"] = {"gains": gains, "results": {k[5:]: v for k, v in res.items() if k.startswith("user_")}}
+    ua = {k[5:]: v for k, v in res.items() if k.startswith("user_")}
+    for v in ua.values():  # BPS as a fraction of what a perfect decoder achieves with the same user
+        for n in DECS:
+            v[n]["oracle_normalised_bps"] = v[n]["bps_mean"] / max(v["Oracle"]["bps_mean"], 1e-9)
+    out["user_ablation_click"] = {"gains": gains, "results": ua}
     out["gain_curves_click"] = {n: cl["modes"]["click"]["decoders"][n]["cal_bps_by_gain"] for n in DECS if n != "Oracle"}
     out["hold_still_wander"] = hold_still_wander(decs, enc)
     out["open_loop_distribution_shift"] = open_loop_shift(decs, enc, user)
@@ -213,7 +220,9 @@ def main():
             f"{res[f'g{g}_d{dw}']['Oracle']['bps_mean']:.2f}" for dw in dwells))
     print("user ablation (click BPS):")
     for uk in users:
-        print(f"  {uk[:24]:24s} " + "  ".join(f"{n} {res['user_' + uk][n]['bps_mean']:.2f}" for n in DECS))
+        print(f"  {uk[:24]:24s} " + "  ".join(f"{n} {res['user_' + uk][n]['bps_mean']:.2f}"
+                                              f"[{res['user_' + uk][n]['bps_ci95'][0]:.2f},{res['user_' + uk][n]['bps_ci95'][1]:.2f}]"
+                                              for n in DECS))
     print("open-loop R^2 vs command (reaches -> webgrid):")
     for n, v in out["open_loop_distribution_shift"].items():
         print(f"  {n:9s} {v['mc_maze_reaches']['r2']:.2f} -> {v['webgrid_commands']['r2']:.2f}   speed ratio "

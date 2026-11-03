@@ -32,7 +32,9 @@ def _gru(U, H):
 
 def test_cpp_matches_python(bench, toy_data, tmp_path):
     X, V, _ = toy_data
+    _, _, Vs = toy_data
     decs = {"kf": KalmanVelocity.fit(X[:40], V[:40]), "wiener": Wiener.fit(X[:40], V[:40], 7, 1e-3),
+            "kf_lag": KalmanVelocity.fit_lagged(X[:40], Vs[:40], [0, 2, 4, 6, 8], 4),
             "gru": _gru(X.shape[-1], 16)}
     stream = X[40:45].reshape(-1, X.shape[-1])
     for name, d in decs.items():
@@ -42,3 +44,16 @@ def test_cpp_matches_python(bench, toy_data, tmp_path):
                             "--steps", "2000"], capture_output=True, text=True)
         assert r.returncode == 0, r.stdout + r.stderr
         assert "PASS" in r.stdout
+
+
+def test_cpp_rejects_truncated_and_padded_files(bench, toy_data, tmp_path):
+    X, V, _ = toy_data
+    d = KalmanVelocity.fit(X[:40], V[:40])
+    export(d, tmp_path / "kf.bin")
+    export_reference(d, X[40], tmp_path / "ref.bin")
+    raw = (tmp_path / "kf.bin").read_bytes()
+    for name, blob in (("trunc", raw[:-4]), ("pad", raw + b"\0\0\0\0")):
+        (tmp_path / f"{name}.bin").write_bytes(blob)
+        r = subprocess.run([str(bench), str(tmp_path / f"{name}.bin"), str(tmp_path / "ref.bin"), "--steps", "10"],
+                           capture_output=True, text=True)
+        assert r.returncode != 0

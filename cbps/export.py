@@ -3,7 +3,7 @@
 File layout (little-endian):
   b"CBPS" | u32 version=1 | u32 kind (1=KF, 2=GRU, 3=Wiener) | u32 n_units | u32 param
   then float32 arrays, row-major:
-    KF:     mu[U], M1[2,2], M2[2,U]
+    KF:     mu[U], M1[d,d], M2[d,U], out[2] (state indices of vx, vy)   param = d
     Wiener: mu[U], W[2, n_hist*U] (block k = k bins ago), b[2]          param = n_hist
     GRU:    mu[U], 1/sd[U], W_ih[3H,U], W_hh[3H,H], b_ih[3H], b_hh[3H],
             W_o[2,H], b_o[2], v_sd[2]                                     param = H
@@ -26,7 +26,7 @@ def _f32(*arrays):
 def export(dec, path: Path) -> None:
     U = len(dec.mu)
     if isinstance(dec, KalmanVelocity):
-        head, body = (1, U, 0), _f32(dec.mu, dec.M1, dec.M2)
+        head, body = (1, U, dec.d), _f32(dec.mu, dec.M1, dec.M2, dec.out.astype(float))
     elif isinstance(dec, Wiener):
         head, body = (3, U, dec.n_hist), _f32(dec.mu, dec.Wt.T, dec.b)
     elif isinstance(dec, GRUDecoder):

@@ -73,3 +73,20 @@ def test_gru_training_smoke(toy_data, hidden):
     dec, info = train_gru(X[:40], V[:40], X[40:], V[40:], hidden=hidden, epochs=3, patience=3)
     assert dec.predict(X[:2]).shape == (2, X.shape[1], 2)
     assert info["epochs_run"] <= 3
+
+
+def test_lagged_kf_beats_velocity_kf_on_multilag_tuning(toy_data):
+    """Toy units encode velocity at several leads; a lag-augmented state should exploit that."""
+    X, V, Vs = toy_data
+    kf = KalmanVelocity.fit(X[:40], Vs[:40, :, 2])
+    kfl = KalmanVelocity.fit_lagged(X[:40], Vs[:40], [0, 2, 4, 6, 8], decode_lead=4)
+    y = Vs[40:, 20:, 2]
+    assert r2(y, kfl.predict(X[40:])[:, 20:]) > r2(y, kf.predict(X[40:])[:, 20:])
+    assert np.allclose(_stream(kfl, X[41]), kfl.predict(X[41:42])[0])
+
+
+def test_wiener_fit_path_matches_fit(toy_data):
+    X, V, _ = toy_data
+    a, b = Wiener.fit_path(X[:40], V[:40], 4, [1e-3, 1e-2])
+    assert np.allclose(a.Wt, Wiener.fit(X[:40], V[:40], 4, 1e-3).Wt)
+    assert not np.allclose(a.Wt, b.Wt)

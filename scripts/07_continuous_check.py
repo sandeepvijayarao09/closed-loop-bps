@@ -26,9 +26,12 @@ def main():
     idx = np.concatenate([np.arange(on[i] - data.PRE_BINS + E, on[i] + data.POST_BINS) for i in ti]) - s0
     Vt = d["vel"][idx + s0 + L]
     out = {"stream_minutes": len(X) * 0.02 / 60, "decoders": {}}
+    te0_V = data.split(data.load(0))[2].V  # target of the lag-0 ablations
+    Vt0 = d["vel"][idx + s0]
     for n, dec in decs.items():
-        per_trial = r2(te.V[:, E:], dec.predict(te.X)[:, E:])
-        cont = r2(Vt, dec.predict(X[None])[0][idx])
+        tv, vt = (te0_V, Vt0) if n.endswith("lag0") else (te.V, Vt)
+        per_trial = r2(tv[:, E:], dec.predict(te.X)[:, E:])
+        cont = r2(vt, dec.predict(X[None])[0][idx])
         out["decoders"][n] = {"per_trial_reset_r2": per_trial, "continuous_r2": cont, "delta": cont - per_trial}
         print(f"{n:14s} reset {per_trial:.3f}  continuous {cont:.3f}")
     save_json("continuous_check.json", out)
