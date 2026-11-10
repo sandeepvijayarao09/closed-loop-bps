@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Closed-loop BCI cursor decoders: offline R² vs simulated Webgrid BPS"
+authors:
+  - family-names: "Vijayarao"
+    given-names: "Sai Sandeep Kumar"
+repository-code: "https://github.com/sandeepvijayarao09/closed-loop-bps"
+url: "https://github.com/sandeepvijayarao09/closed-loop-bps"
+version: "1.0.0"
+date-released: "2026-11-09"
+license: MIT

@@ -1,5 +1,7 @@
 # closed-loop-bps
 
+[![ci](https://github.com/sandeepvijayarao09/closed-loop-bps/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/sandeepvijayarao09/closed-loop-bps/actions/workflows/ci.yml)
+
 A reproducible harness for asking: **does offline decoding accuracy predict closed-loop cursor control?**
 
 The harness:
@@ -12,22 +14,23 @@ It is not a new finding that offline accuracy can mislead (see [Related work](#r
 The contribution is the harness and the failure-mode diagnostics: controls that separate *simulator mismatch* from
 *distribution shift*, ablations of the simulated user and of ReFIT labels, and a measured simulator fidelity.
 
-## Results in brief (60 seconds)
+## In 30 seconds
 
-- **Ceiling.** A decoder that outputs the simulated user's true intent scores **9.24 BPS** in this simulator.
-  This is *not comparable* to Neuralink's or BrainGate's human numbers. The task geometry, the click model and a
-  monkey-speed user are all choices made here. With a slower, human-like user the ceiling is 6.86 BPS.
-- **Best real decoder: a lag-augmented Kalman filter (KF-lag), 3.07 BPS** [2.97, 3.16] in click mode. Its offline R²
-  is 0.553, vs 0.654 for a Wiener filter and 0.85–0.88 for GRUs. The classic velocity KF scores 2.46 BPS, and the
-  GRUs 0.47–0.79.
-- **Offline R² does not rank closed-loop BPS here.** The two causes measured are:
-  - the simulator is biased toward linear decoders. GRUs trained on *simulated* spikes recover from 0.75 to 2.15 BPS
-    (GRU-64);
-  - a distribution shift from MC_Maze's isolated reaches to Webgrid's continuous control. On MC_RTT (continuous
-    reaching), GRU-16 trails the KF by only 0.22 BPS.
-- **Simulator bias, in one sentence:** the simulator's neurons are velocity-tuned Poisson units, which makes it easier
-  than reality for Kalman filters and harder for GRUs (`results/encoder_fidelity.json`). Read every closed-loop
-  ranking here as a statement about this simulator, not about people.
+- **What it is:** a reproducible harness that trains intracortical cursor decoders on real monkey motor-cortex data
+  (NLB MC_Maze, with MC_RTT as a replication), runs them closed loop in a simulated Webgrid task with a simulated
+  user, scores them in bits per second (BPS), and runs each one in a dependency-free C++ loop on 20 ms bins.
+- **Why it matters:** BCI decoders are usually chosen by offline accuracy, but users care about closed-loop control.
+  This harness measures where the two disagree, and why.
+- **Key result:** offline R² does not rank closed-loop BPS here. GRUs have the best offline R² (0.845–0.881) but
+  score 0.47–0.79 BPS; a lag-augmented Kalman filter (R² 0.553) scores best, **3.07 BPS** [2.97, 3.16], against a
+  9.24 BPS simulator ceiling (6.86 with a human-speed user). Two measured causes: the simulator favours linear
+  decoders (GRU-64 trained on simulated spikes recovers from 0.75 to 2.15 BPS), and MC_Maze's isolated reaches differ
+  from continuous control (on MC_RTT, GRU-16 trails the KF by only 0.22 BPS). Simulated BPS is **not comparable** to
+  Neuralink's or BrainGate's human numbers; read every ranking as a statement about this simulator.
+- **What I did:** built the decoders, the encoding model and simulated user, the Webgrid scoring, the confound
+  controls (simulated-spike training, MC_RTT, user-model and ReFIT-label ablations) and the C++ loop with parity tests.
+- **Built with:** Python, NumPy, PyTorch (GRU training), C++17, pytest, GitHub Actions; public DANDI data.
+- **Try it:** `pytest -q tests` (synthetic data, no download), or `./run_all.sh` for the full pipeline.
 
 Every number below comes from a file in [`results/`](results/): the table and figures are generated from them, and
 numbers in the prose are quoted from them.
@@ -370,9 +373,10 @@ uv venv --python 3.12 .venv && uv pip install --python .venv/bin/python -r requi
 
 `run_all.sh` runs scripts `01`–`11` (about 60 minutes on an M-series MacBook, CPU only). It downloads MC_Maze
 (691 MB) and MC_RTT (50 MB), both sha256-checked. `requirements.lock` pins exact versions; `requirements.txt` lists
-the loose ones. The trained decoders and encoders are packaged by `scripts/make_release_asset.sh` for a GitHub
-release, so the closed-loop steps can be re-run without retraining: unpack the archive at the repo root to restore
-`artifacts/`.
+the loose ones. `artifacts/` (the trained decoders and encoders) is not in the repo. It will be attached to
+the v1.0.0 GitHub Release as `closed-loop-bps-artifacts-v1.0.0.tar.gz`, built by `scripts/make_release_asset.sh v1.0.0`.
+Once it is published, unpack it at the repo root to restore `artifacts/` and re-run the closed-loop steps without
+retraining. Until then, `./run_all.sh` regenerates `artifacts/`.
 
 ```bash
 .venv/bin/python -m pytest -q tests
